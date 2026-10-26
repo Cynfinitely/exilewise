@@ -9,19 +9,27 @@ export function StepBreadcrumb({
         {steps.map((step, i) => (
           <li key={step.label} className="inline-flex items-center gap-2">
             {i > 0 ? (
-              <span aria-hidden className="text-forge-muted">
-                →
-              </span>
+              <span aria-hidden className="h-px w-4 bg-forge-border" />
             ) : null}
             <span
               aria-current={step.active ? 'step' : undefined}
-              className={
+              className={`inline-flex items-center gap-1.5 ${
                 step.active
-                  ? 'rounded-sm bg-forge-panel px-1.5 py-0.5 font-semibold text-forge-goldbright ring-1 ring-forge-rust/50'
+                  ? 'font-semibold text-forge-goldbright'
                   : 'font-medium text-forge-muted'
-              }
+              }`}
             >
-              <span className="mr-1 num">{i + 1}.</span>
+              <span
+                className={`num flex h-5 w-5 items-center justify-center rounded-full text-2xs ${
+                  step.active
+                    ? 'bg-forge-gold text-white'
+                    : step.done
+                      ? 'bg-forge-mint text-affix-suffix'
+                      : 'bg-forge-panel text-forge-muted ring-1 ring-forge-border'
+                }`}
+              >
+                {i + 1}
+              </span>
               {step.label}
             </span>
           </li>

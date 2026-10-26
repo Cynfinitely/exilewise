@@ -7,41 +7,47 @@
   --text-2xs: 0.6875rem;
   --text-2xs--line-height: 1rem;
 
-  /* Cream, orange, and brown from the chosen palette. Token names stay `forge`. */
-  --color-forge-bg: #fdfbd4;
-  --color-forge-panel: #fffde8;
-  --color-forge-panel2: #f6ebb8;
-  --color-forge-border: #d3bf94;
-  --color-forge-gold: #713600;
-  --color-forge-goldbright: #38240d;
-  /* Secondary text; solid so it keeps ≥4.5:1 on every cream surface. */
-  --color-forge-muted: #7a4e22;
-  --color-forge-rust: #c05800;
-  /* Rust dark enough for small text (≥4.5:1 on panel2). */
-  --color-forge-rust-strong: #a34a00;
+  /* Soft pastel lavender + mint palette. Token names stay `forge` so components don't churn. */
+  --color-forge-bg: #f7f5fc;
+  --color-forge-panel: #ffffff;
+  --color-forge-panel2: #efeaf8;
+  --color-forge-border: #dcd3ee;
+  /* Primary: deep lavender, dark enough for white text and small links. */
+  --color-forge-gold: #5b4a9e;
+  --color-forge-goldbright: #2f2a45;
+  /* Secondary text; solid so it keeps ≥4.5:1 on every surface. */
+  --color-forge-muted: #5f5878;
+  /* Accent for rings, hover borders and active states. */
+  --color-forge-rust: #9d8de0;
+  /* Accent dark enough for small text (≥4.5:1 on panel2). */
+  --color-forge-rust-strong: #5f4fb0;
+  /* Soft secondary accents (active dots, card strips). */
+  --color-forge-mint: #bfe6d6;
+  --color-forge-peach: #f9d9c8;
+  --color-forge-sky: #cfe2f6;
 
-  --color-affix-prefix: #713600;
-  --color-affix-suffix: #a34a00;
+  --color-affix-prefix: #5b4a9e;
+  --color-affix-suffix: #2b6f62;
 
-  --color-rarity-normal: #38240d;
-  --color-rarity-magic: #3146c9;
-  --color-rarity-rare: #a34a00;
-  --color-rarity-unique: #713600;
-  --color-rarity-currency: #38240d;
+  --color-rarity-normal: #2f2a45;
+  --color-rarity-magic: #3a56c0;
+  --color-rarity-rare: #855700;
+  --color-rarity-unique: #9a4a26;
+  --color-rarity-currency: #2f2a45;
 
-  /* Semantic feedback tones; fg passes AA on its own bg and on the creams. */
-  --color-success-fg: #2f6b1f;
-  --color-success-bg: #e6f0d2;
-  --color-success-border: #a9c78f;
-  --color-warn-fg: #8a5300;
-  --color-warn-bg: #fbe7b5;
-  --color-warn-border: #e0b55e;
-  --color-danger-fg: #a1261b;
-  --color-danger-bg: #f8dcd3;
-  --color-danger-border: #e0a090;
-  --color-info-fg: #1f5a8a;
-  --color-info-bg: #ddeaf2;
-  --color-info-border: #9fc0d8;
+  /* Semantic feedback tones; fg passes AA on its own bg and on the panels. */
+  --color-success-fg: #2a6a4c;
+  --color-success-bg: #e2f4eb;
+  --color-success-border: #a8d8c2;
+  --color-warn-fg: #855700;
+  --color-warn-bg: #fdf0d8;
+  --color-warn-border: #efcf95;
+  --color-danger-fg: #a0324a;
+  --color-danger-bg: #fbe4ea;
+  --color-danger-border: #eeb0bf;
+  --color-info-fg: #2b5d8c;
+  --color-info-bg: #e3eefa;
+  --color-info-border: #a9c6e6;
 }
 
 /* Tailwind v3 defaults that v4 changed, kept so the UI looks the same. */
@@ -84,11 +90,11 @@ html {
 
 body {
   background-image:
-    radial-gradient(ellipse at top, rgba(192, 88, 0, 0.16), transparent 58%),
+    radial-gradient(ellipse at top, rgba(157, 141, 224, 0.18), transparent 60%),
     radial-gradient(
       ellipse at bottom right,
-      rgba(113, 54, 0, 0.12),
-      transparent 52%
+      rgba(143, 207, 181, 0.16),
+      transparent 55%
     );
   min-height: 100vh;
 }
@@ -111,20 +117,20 @@ body {
   }
 
   .panel {
-    @apply rounded-lg border border-forge-border bg-forge-panel shadow-xs;
+    @apply rounded-xl border border-forge-border bg-forge-panel shadow-[0_1px_3px_rgba(91,74,158,0.06)];
   }
 
   .panel-inset {
-    @apply rounded-md border border-forge-border/80 bg-forge-panel2;
+    @apply rounded-lg border border-forge-border/80 bg-forge-panel2;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-forge-border bg-forge-panel2 px-3 py-1.5 text-sm font-medium text-forge-goldbright transition-colors hover:border-forge-rust/50 hover:text-forge-rust-strong focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/50 focus-visible:ring-offset-2 focus-visible:ring-offset-forge-bg disabled:cursor-not-allowed disabled:opacity-50 max-sm:min-h-[2.5rem];
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-forge-border bg-forge-panel px-3 py-1.5 text-sm font-medium text-forge-goldbright transition-colors hover:border-forge-rust/60 hover:bg-forge-panel2 hover:text-forge-rust-strong focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/50 focus-visible:ring-offset-2 focus-visible:ring-offset-forge-bg disabled:cursor-not-allowed disabled:opacity-50 max-sm:min-h-[2.5rem];
   }
 
   /* The main action in a region; one per view where possible. */
   .btn-primary {
-    @apply border-forge-gold bg-forge-gold text-forge-panel hover:border-forge-goldbright hover:bg-forge-goldbright hover:text-forge-panel disabled:hover:bg-forge-gold;
+    @apply border-forge-gold bg-forge-gold text-white shadow-xs hover:border-forge-rust-strong hover:bg-forge-rust-strong hover:text-white disabled:hover:bg-forge-gold;
   }
 
   /* Low-emphasis text action (Clear, Revert, Load sample). */
@@ -141,7 +147,7 @@ body {
   }
 
   .input {
-    @apply w-full rounded-md border border-forge-border bg-forge-panel px-3 py-2 text-sm text-forge-goldbright placeholder:text-forge-muted/80 focus:border-forge-rust/60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/40 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply w-full rounded-lg border border-forge-border bg-forge-panel px-3 py-2 text-sm text-forge-goldbright placeholder:text-forge-muted/80 focus:border-forge-rust/60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/40 disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .label {

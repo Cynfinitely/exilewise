@@ -1,24 +1,47 @@
 import Link from 'next/link';
+import { NavIcon, type NavIconName } from '@/components/ui/NavIcons';
 
-const FEATURES = [
+// Full class names so Tailwind picks them up.
+const ACCENTS = {
+  lavender: 'bg-forge-rust/30 text-forge-gold',
+  mint: 'bg-forge-mint text-affix-suffix',
+  peach: 'bg-forge-peach text-rarity-unique',
+  sky: 'bg-forge-sky text-info-fg',
+} as const;
+
+const FEATURES: {
+  href: string;
+  title: string;
+  desc: string;
+  icon: NavIconName;
+  accent: keyof typeof ACCENTS;
+}[] = [
   {
     href: '/items',
     title: 'Items & Modifiers',
+    icon: 'items',
+    accent: 'lavender',
     desc: 'Search any base item and see every prefix and suffix that can roll on it, grouped by mod group with tiers, value ranges, item-level requirements and spawn weights.',
   },
   {
     href: '/materials',
     title: 'Crafting Materials',
+    icon: 'materials',
+    accent: 'mint',
     desc: 'A reference for Path of Exile 2 crafting currencies and materials \u2014 essences, omens, runes, catalysts and more \u2014 with what each one does and its live price.',
   },
   {
     href: '/craft',
     title: 'Crafting Planner',
+    icon: 'craft',
+    accent: 'peach',
     desc: 'Pick a base and the modifiers you want. The crafting brain simulates every technique it knows and ranks them by expected cost to finish the item.',
   },
   {
     href: '/plans',
     title: 'Saved Plans',
+    icon: 'plans',
+    accent: 'sky',
     desc: "Reopen saved crafting plans and see how their cost moved with today's currency prices.",
   },
 ];
@@ -26,7 +49,11 @@ const FEATURES = [
 export default function HomePage() {
   return (
     <div className="space-y-6 sm:space-y-8">
-      <section className="panel p-5 sm:p-8">
+      <section className="panel relative overflow-hidden bg-gradient-to-br from-forge-panel via-forge-panel to-forge-panel2 p-5 sm:p-8">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-forge-mint/40 blur-3xl"
+        />
         <h1 className="text-2xl font-bold text-forge-goldbright sm:text-3xl">
           Path of Exile 2 Crafting Helper
         </h1>
@@ -52,8 +79,13 @@ export default function HomePage() {
           <Link
             key={f.href}
             href={f.href}
-            className="panel group flex flex-col p-4 transition-colors hover:border-forge-rust/50 focus-visible:rounded-lg sm:p-5"
+            className="panel group flex flex-col p-4 transition hover:-translate-y-0.5 hover:border-forge-rust/60 hover:shadow-md focus-visible:rounded-xl sm:p-5"
           >
+            <span
+              className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${ACCENTS[f.accent]}`}
+            >
+              <NavIcon name={f.icon} className="h-5 w-5" />
+            </span>
             <h2 className="text-lg font-semibold text-forge-goldbright">
               {f.title}
             </h2>
