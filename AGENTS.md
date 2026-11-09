@@ -1,6 +1,6 @@
 # AGENTS.md — Workspace Facts
 
-<!-- dev-standards: v1.0.0 -->
+<!-- dev-standards: v1.1.0 -->
 
 Shared project knowledge for AI assistants. Commit this file.
 
@@ -25,6 +25,8 @@ Shared project knowledge for AI assistants. Commit this file.
 - Dependency audit: `npm run audit:ci` (`scripts/npm-audit-ci.sh`), never bare `npm audit`. Waivers: `scripts/npm-audit-allowlist.json`.
 - CI: `.github/workflows/pr-checks.yml` runs the same checks as the hooks.
 
+- Issue workflow: `/issue <number>` in Claude Code (`.claude/commands/issue.md`) plans, waits for approval, then implements, commits, pushes, and opens the PR. Other agents: "follow `.claude/commands/issue.md` for issue N". It learns the repo from this file, so keep the PR base branch, branch naming, and run-the-app commands in _Learned Workspace Facts_.
+
 ## Learned Workspace Facts
 
 <!-- Repo-specific facts agents keep getting wrong: architecture, domain rules,
@@ -41,3 +43,5 @@ Shared project knowledge for AI assistants. Commit this file.
 - **Tailwind 4:** no `tailwind.config.ts`. Theme tokens are `@theme` variables in `src/app/globals.css` (`--color-forge-*` → `bg-forge-*`); custom utilities that need variants use `@utility`. v4 scale names: `rounded-sm`/`shadow-xs`/`outline-hidden` are the old `rounded`/`shadow-sm`/`outline-none`.
 - **Codebase map:** `graphify-out/` (git-ignored). Read `graphify-out/GRAPH_REPORT.md` before exploring; run `graphify update .` after code changes.
 - **Design docs:** `docs/superpowers/specs/` and `docs/superpowers/plans/`.
+
+- **Run the app:** `npm run dev`, then open http://localhost:3000. For local game data, follow the snapshot seeding steps in `README.md`.
