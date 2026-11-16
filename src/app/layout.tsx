@@ -2,14 +2,26 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
+
+const DESCRIPTION =
+  'Exilewise is a free helper for Path of Exile 1 and 2: browse item bases and modifiers, look up crafting materials and prices, and find the cheapest way to craft the item you want.';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: {
-    default: 'PoE2 Crafting Helper',
-    template: '%s · PoE2 Crafting Helper',
+    default: `${SITE_NAME} · Path of Exile 1 & 2 helper`,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    'Browse Path of Exile 2 item bases and modifiers, reference crafting materials, plan crafting paths, and price-check items.',
+  description: DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    url: '/',
+    title: `${SITE_NAME} · Path of Exile 1 & 2 helper`,
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport = {

@@ -10,8 +10,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const BASE_URL = 'https://repoe-fork.github.io/poe2';
-const USER_AGENT =
-  'poe2-crafting-helper/0.1 (local-first dev tool; +https://github.com/repoe-fork/repoe)';
+const USER_AGENT = 'exilewise/0.1 (+https://exilewise.com)';
 
 const FILES = [
   'base_items.min.json',

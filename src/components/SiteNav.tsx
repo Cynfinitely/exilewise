@@ -162,16 +162,16 @@ export function SiteNav() {
           href="/"
           aria-current={homeActive ? 'page' : undefined}
           className="mr-1 flex h-9 shrink-0 items-center gap-2 rounded-full pr-2 text-forge-goldbright"
-          aria-label="PoE2 Crafting Helper — home"
+          aria-label="Exilewise — home"
         >
           <span
             aria-hidden
             className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-forge-rust to-forge-mint text-xs font-bold text-forge-goldbright"
           >
-            P2
+            Ew
           </span>
           <span className="text-base font-bold tracking-tight">
-            PoE2 <span className="font-medium text-forge-muted">Crafting</span>
+            Exile<span className="font-medium text-forge-muted">wise</span>
           </span>
         </Link>
 
