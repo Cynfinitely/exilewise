@@ -15,7 +15,7 @@ type NavItem = {
 
 const NAV_GROUPS: { label: string; links: NavItem[] }[] = [
   {
-    label: 'Browse',
+    label: 'PoE 2 · Browse',
     links: [
       {
         href: '/items',
@@ -32,7 +32,7 @@ const NAV_GROUPS: { label: string; links: NavItem[] }[] = [
     ],
   },
   {
-    label: 'Plan',
+    label: 'PoE 2 · Plan',
     links: [
       {
         href: '/craft',
@@ -176,6 +176,12 @@ export function SiteNav() {
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center gap-1 md:flex">
+          <span
+            className="mr-1 rounded-full bg-forge-mint px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-affix-suffix"
+            title="These tools are for Path of Exile 2"
+          >
+            PoE 2
+          </span>
           {NAV_GROUPS.map((group, i) => (
             <div
               key={group.label}
