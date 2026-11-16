@@ -1,6 +1,6 @@
-# PoE2 Crafting Helper
+# Exilewise
 
-A local-first web app for planning crafts in **Path of Exile 2**. It does one thing: given a base, an item level and the modifiers you want, it tells you the cheapest way to craft it.
+**Exilewise** ([exilewise.com](https://exilewise.com)) is a free helper site for **Path of Exile 1 and 2**. Its first tool set covers Path of Exile 2 crafting: given a base, an item level and the modifiers you want, it tells you the cheapest way to craft it. PoE 1 tools are planned.
 
 - **Crafting Planner** — pick a base and the mods you want (each with a minimum tier, optionally "nice to have"); the **crafting brain** simulates every technique it knows, tunes each technique's options, and ranks them by expected cost per finished item, with the 50% / 90% cost spread, success rate per attempt and a shopping list. Also: **recommend a base** for a goal, **mass craft** a batch, **paste an item** (Ctrl+C) or a PoB build code, and **finish** a pasted item.
 - **Items & Mods** — every prefix/suffix that can roll on a base, grouped by mod group with tiers, spawn-weight odds, tag chips and an "essence" badge.

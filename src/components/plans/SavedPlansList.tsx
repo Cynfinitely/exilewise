@@ -2,7 +2,12 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import type { SavedPlanSummary } from '@/lib/user/queries';
+import {
+  browserStorage,
+  deletePlan,
+  type SavedPlan,
+} from '@/lib/user/localStore';
+import type { PlanDrift } from '@/lib/user/repriceRequest';
 import { formatCost } from '@/lib/pricing/format';
 import { Alert } from '@/components/ui/Alert';
 import { AffixMark } from '@/components/ui/Badge';
@@ -10,13 +15,7 @@ import { ConfirmButton } from '@/components/ui/ConfirmButton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { formatCurrentMods, formatGoalEntry } from '@/lib/craft/goal';
 
-export interface PlanDrift {
-  savedCostExalted: number;
-  nowCostExalted: number;
-  divinePriceExalted: number;
-}
-
-function craftHref(p: SavedPlanSummary): string {
+function craftHref(p: SavedPlan): string {
   const groups = [...p.plan.desiredPrefixes, ...p.plan.desiredSuffixes]
     .map(d =>
       formatGoalEntry({
@@ -70,45 +69,24 @@ function DriftLine({ d }: { d: PlanDrift }) {
 }
 
 export function SavedPlansList({
-  initial,
+  plans,
   drift = {},
 }: {
-  initial: SavedPlanSummary[];
-  drift?: Record<number, PlanDrift>;
+  plans: SavedPlan[];
+  drift?: Record<string, PlanDrift>;
 }) {
-  const [plans, setPlans] = useState(initial);
   const [status, setStatus] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const remove = async (plan: SavedPlanSummary) => {
-    setError(null);
-    setStatus('');
-    // Optimistic removal; restored at its original position if the request fails.
-    const index = plans.findIndex(x => x.id === plan.id);
-    setPlans(list => list.filter(x => x.id !== plan.id));
-    let ok = false;
-    try {
-      const res = await fetch(`/api/plans?id=${plan.id}`, { method: 'DELETE' });
-      ok = res.ok;
-    } catch {
-      ok = false;
-    }
-    if (ok) {
+  const remove = (plan: SavedPlan) => {
+    if (deletePlan(browserStorage(), plan.id)) {
+      setError(null);
       setStatus(`Deleted \u201c${plan.name}\u201d`);
       return;
     }
-    setPlans(list => {
-      if (list.some(x => x.id === plan.id)) return list;
-      const next = [...list];
-      next.splice(
-        index < 0 ? next.length : Math.min(index, next.length),
-        0,
-        plan
-      );
-      return next;
-    });
+    setStatus('');
     setError(
-      `Couldn\u2019t delete \u201c${plan.name}\u201d. Please try again.`
+      `Couldn\u2019t delete \u201c${plan.name}\u201d. Your browser blocked storage for this site.`
     );
   };
 
@@ -170,7 +148,7 @@ export function SavedPlansList({
                     Open
                   </Link>
                   <ConfirmButton
-                    onConfirm={() => void remove(p)}
+                    onConfirm={() => remove(p)}
                     confirmLabel="Confirm delete?"
                     ariaLabel={`Delete plan \u201c${p.name}\u201d`}
                   >

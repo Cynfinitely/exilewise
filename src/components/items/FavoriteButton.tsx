@@ -1,42 +1,32 @@
 'use client';
 
 import { useState } from 'react';
+import { browserStorage, toggleFavorite } from '@/lib/user/localStore';
+import { useFavorites } from '@/lib/user/useLocalStore';
 
 export function FavoriteButton({
   baseId,
   baseName,
-  initial,
+  itemClass,
 }: {
   baseId: string;
-  /** Included in the accessible name so the button isn't just "Favorite". */
-  baseName?: string;
-  initial: boolean;
+  /** Stored with the favorite and included in the accessible name. */
+  baseName: string;
+  itemClass: string;
 }) {
-  const [fav, setFav] = useState(initial);
-  const [busy, setBusy] = useState(false);
+  const favorites = useFavorites();
   const [error, setError] = useState<string | null>(null);
+  const fav = favorites?.some(f => f.baseId === baseId) ?? false;
 
-  const toggle = async () => {
-    const prev = fav;
-    // Optimistic: flip immediately, roll back if the server disagrees.
-    setFav(!prev);
-    setBusy(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/favorites', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ baseId }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = (await res.json()) as { favorited?: unknown };
-      setFav(Boolean(data.favorited));
-    } catch {
-      setFav(prev);
-      setError("Couldn't save — try again.");
-    } finally {
-      setBusy(false);
-    }
+  const toggle = () => {
+    const next = toggleFavorite(browserStorage(), {
+      baseId,
+      name: baseName,
+      itemClass,
+    });
+    setError(
+      next === null ? "Couldn't save. Your browser blocked storage." : null
+    );
   };
 
   return (
@@ -44,13 +34,13 @@ export function FavoriteButton({
       <button
         type="button"
         onClick={toggle}
-        disabled={busy}
+        disabled={favorites === undefined}
         aria-pressed={fav}
         className={`btn shrink-0 ${fav ? 'border-forge-gold text-forge-goldbright' : ''}`}
       >
         <span aria-hidden>{fav ? '★' : '☆'}</span>
         {fav ? 'Favorited' : 'Favorite'}
-        {baseName ? <span className="sr-only"> {baseName}</span> : null}
+        <span className="sr-only"> {baseName}</span>
       </button>
       <span
         role="status"

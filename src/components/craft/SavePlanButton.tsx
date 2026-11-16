@@ -5,22 +5,12 @@ import { useEffect, useId, useRef, useState } from 'react';
 import type { CraftPlan } from '@/lib/craft/types';
 import { ActionWithInfo } from '@/components/ui/ActionWithInfo';
 import { Alert } from '@/components/ui/Alert';
+import { browserStorage, savePlan } from '@/lib/user/localStore';
 
-type State = 'idle' | 'naming' | 'saving' | 'saved' | 'error';
+type State = 'idle' | 'naming' | 'saved' | 'error';
 
 function defaultName(plan: CraftPlan): string {
   return `${plan.baseName} (${plan.desiredPrefixes.length}p/${plan.desiredSuffixes.length}s)`;
-}
-
-async function errorText(res: Response): Promise<string> {
-  const raw = await res.text();
-  try {
-    const data = JSON.parse(raw) as { error?: unknown };
-    if (typeof data.error === 'string' && data.error) return data.error;
-  } catch {
-    // not JSON — fall through to the raw body
-  }
-  return raw || `Request failed (${res.status})`;
 }
 
 export function SavePlanButton({ plan }: { plan: CraftPlan }) {
@@ -53,35 +43,30 @@ export function SavePlanButton({ plan }: { plan: CraftPlan }) {
     requestAnimationFrame(() => triggerRef.current?.focus());
   };
 
-  const save = async () => {
+  const save = () => {
     const trimmed = name.trim();
     if (!trimmed) return;
-    setState('saving');
-    setError(null);
-    try {
-      const res = await fetch('/api/plans', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: trimmed, baseId: plan.baseId, plan }),
-      });
-      if (!res.ok) throw new Error(await errorText(res));
+    if (savePlan(browserStorage(), trimmed, plan)) {
+      setError(null);
       setState('saved');
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not save the plan.');
+    } else {
+      setError(
+        'Your browser blocked storage for this site, or it is full. Allow site data and try again.'
+      );
       setState('error');
     }
   };
 
-  if (state === 'naming' || state === 'saving') {
+  if (state === 'naming') {
     return (
       <form
         className="flex w-full flex-wrap items-end gap-2 sm:w-auto"
         onSubmit={e => {
           e.preventDefault();
-          void save();
+          save();
         }}
         onKeyDown={e => {
-          if (e.key === 'Escape' && state === 'naming') {
+          if (e.key === 'Escape') {
             e.preventDefault();
             cancel();
           }
@@ -98,23 +83,17 @@ export function SavePlanButton({ plan }: { plan: CraftPlan }) {
             value={name}
             maxLength={120}
             required
-            disabled={state === 'saving'}
             onChange={e => setName(e.target.value)}
           />
         </div>
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={state === 'saving' || !name.trim()}
+          disabled={!name.trim()}
         >
-          {state === 'saving' ? 'Saving…' : 'Save'}
+          Save
         </button>
-        <button
-          type="button"
-          className="btn btn-ghost"
-          onClick={cancel}
-          disabled={state === 'saving'}
-        >
+        <button type="button" className="btn btn-ghost" onClick={cancel}>
           Cancel
         </button>
       </form>
@@ -125,9 +104,9 @@ export function SavePlanButton({ plan }: { plan: CraftPlan }) {
     <div className="flex flex-col items-start gap-2 sm:items-end">
       <ActionWithInfo
         label="Save plan"
-        summary="Stores the current plan locally for later."
+        summary="Saves the current plan in this browser for later."
         detail={[
-          'Saved to the local database via the plans API.',
+          'Stored in this browser only; other devices won’t see it.',
           "The Saved page re-prices it at today's currency prices.",
           'Asks for a name — includes base and mod counts by default.',
         ]}

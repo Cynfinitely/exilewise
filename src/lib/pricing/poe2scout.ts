@@ -18,8 +18,7 @@ import { priceCache } from '@/db/schema';
  */
 
 const BASE_URL = 'https://api.poe2scout.com/poe2';
-const USER_AGENT =
-  'poe2-crafting-helper/0.1 (local-first dev tool; contact: set-your-email@example.com)';
+const USER_AGENT = 'exilewise/0.1 (+https://exilewise.com)';
 const CACHE_TTL_MS = 60 * 60 * 1000; // poe2scout updates ~hourly
 // All material categories poe2scout tracks, so essences/omens/fragments/etc.
 // are all priced (used by the Materials page and the crafting solver).

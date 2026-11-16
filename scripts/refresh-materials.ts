@@ -13,8 +13,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const BASE_URL = 'https://poe2scout.com/api/poe2';
-const USER_AGENT =
-  'poe2-crafting-helper/0.1 (local-first dev tool; contact: set-your-email@example.com)';
+const USER_AGENT = 'exilewise/0.1 (+https://exilewise.com)';
 
 // Categories that hold craftable materials. Human labels keep the Materials
 // page readable; the apiId stays for joining live prices.

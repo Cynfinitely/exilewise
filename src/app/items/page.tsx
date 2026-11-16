@@ -16,7 +16,6 @@ import { ModColumn } from '@/components/items/ModColumn';
 import { FavoriteButton } from '@/components/items/FavoriteButton';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { EmptyState } from '@/components/ui/EmptyState';
-import { isFavorite } from '@/lib/user/queries';
 import {
   guaranteedGroups,
   modHasTag,
@@ -80,7 +79,6 @@ export default async function ItemsPage(props: {
   const implicitTexts = pool
     ? await getModTexts(pool.base.implicits)
     : undefined;
-  const favorited = pool ? await isFavorite(pool.base.id) : false;
 
   const tag = searchParams.tag?.trim() || '';
   const guaranteed = pool
@@ -199,7 +197,7 @@ export default async function ItemsPage(props: {
                     key={pool.base.id}
                     baseId={pool.base.id}
                     baseName={pool.base.name}
-                    initial={favorited}
+                    itemClass={pool.base.itemClass}
                   />
                   <PlanCraftLink href={planHref} />
                 </div>

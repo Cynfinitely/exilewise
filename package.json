@@ -1,8 +1,8 @@
 {
-  "name": "poe2-crafting-helper",
+  "name": "exilewise",
   "version": "0.1.0",
   "private": true,
-  "description": "Local-first Path of Exile 2 crafting helper: browse bases & modifiers, reference crafting materials, and let the crafting brain pick the cheapest path to the item you want.",
+  "description": "Exilewise: Path of Exile 1 & 2 helper tools. Browse bases & modifiers, reference crafting materials, and let the crafting brain pick the cheapest path to the item you want.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -30,7 +30,7 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "server-only": "^0.0.1",
-    "zod": "^3.24.1"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",

@@ -15,8 +15,8 @@ export const baseItemSchema = z
     release_state: z.string().optional(),
     inventory_width: z.number().optional(),
     inventory_height: z.number().optional(),
-    requirements: z.record(z.number()).nullable().optional(),
-    properties: z.record(z.any()).nullable().optional(),
+    requirements: z.record(z.string(), z.number()).nullable().optional(),
+    properties: z.record(z.string(), z.any()).nullable().optional(),
     implicits: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
     visual_identity: z
@@ -65,7 +65,7 @@ export const itemClassSchema = z
   })
   .passthrough();
 
-export const baseItemsFile = z.record(baseItemSchema);
-export const modsFile = z.record(modSchema);
-export const itemClassesFile = z.record(itemClassSchema);
+export const baseItemsFile = z.record(z.string(), baseItemSchema);
+export const modsFile = z.record(z.string(), modSchema);
+export const itemClassesFile = z.record(z.string(), itemClassSchema);
 export const tagsFile = z.array(z.string());
