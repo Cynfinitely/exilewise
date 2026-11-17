@@ -1,14 +1,15 @@
 import { Alert } from '@/components/ui/Alert';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { pageMetadata } from '@/lib/seo/metadata';
+import { seoPage } from '@/lib/seo/pages';
+import { breadcrumbJsonLd, webAppJsonLd } from '@/lib/seo/jsonld';
 import { ChannelSection } from '@/components/videos/ChannelSection';
 import { VisceraExplorer } from '@/components/viscera/VisceraExplorer';
+import { VisceraIndex } from '@/components/viscera/VisceraIndex';
 import { getSelectedLeague } from '@/lib/games/selection';
 import { getVisceraSnapshot, parseShareParam } from '@/lib/poe1/viscera/data';
 
-export const metadata = {
-  title: 'Viscera & Wickerman (Covens)',
-  description:
-    'Every Path of Exile Covens league viscera: search and filter by slot, tier, boss and build, plan your four-slot Wickerman and get suggestions for your build.',
-};
+export const metadata = pageMetadata('/poe1/viscera');
 
 const FACTS = [
   {
@@ -41,6 +42,19 @@ export default async function VisceraPage(props: {
 
   return (
     <div className="space-y-10">
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Viscera', path: '/poe1/viscera' },
+          ]),
+          webAppJsonLd({
+            name: 'Wickerman Planner',
+            path: '/poe1/viscera',
+            description: seoPage('/poe1/viscera').description,
+          }),
+        ]}
+      />
       <header className="relative pt-2 text-center">
         <p className="eyebrow">Path of Exile · Covens league</p>
         <h1 className="display mt-3 text-4xl sm:text-5xl">
@@ -89,6 +103,8 @@ export default async function VisceraPage(props: {
         shared={shared}
         league={league}
       />
+
+      <VisceraIndex viscera={snapshot.viscera} />
 
       <p className="text-xs text-forge-muted">
         Data from the{' '}

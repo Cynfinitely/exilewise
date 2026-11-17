@@ -1,4 +1,9 @@
 import Link from 'next/link';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { pageMetadata } from '@/lib/seo/metadata';
+import { seoPage } from '@/lib/seo/pages';
+import { videoJsonLd, websiteJsonLd } from '@/lib/seo/jsonld';
+import { getLatestVideos } from '@/lib/youtube/feed';
 import { ChannelSection } from '@/components/videos/ChannelSection';
 import { WickermanFigure } from '@/components/viscera/WickermanFigure';
 import { getVisceraSnapshot } from '@/lib/poe1/viscera/data';
@@ -28,8 +33,11 @@ const STEPS = [
   },
 ];
 
-export default function HomePage() {
+export const metadata = pageMetadata('/');
+
+export default async function HomePage() {
   const { viscera } = getVisceraSnapshot();
+  const [latest] = await getLatestVideos();
   const bosses = new Set(viscera.flatMap(v => v.sources.map(s => s.boss)));
   // Showcase: the strongest viscera with an icon in each socket.
   const showcase = Object.fromEntries(
@@ -49,6 +57,12 @@ export default function HomePage() {
 
   return (
     <div className="space-y-20 sm:space-y-28">
+      <JsonLd
+        data={[
+          websiteJsonLd(seoPage('/').description),
+          ...(latest ? [videoJsonLd(latest)] : []),
+        ]}
+      />
       <section className="grid items-center gap-10 pt-4 lg:grid-cols-[1.15fr_1fr] lg:pt-10">
         <div className="text-center lg:text-left">
           <p className="eyebrow">Path of Exile · Covens league</p>

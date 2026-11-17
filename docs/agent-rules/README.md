@@ -10,6 +10,7 @@ Canonical instructions for coding agents (Claude Code, Cursor, GitHub Copilot, a
 | Hand-written file size                  | [file-size-limit.md](file-size-limit.md)           |
 | Database schema changes (repo-adapted)  | [generated-migrations.md](generated-migrations.md) |
 | Working, code, and security conventions | [conventions.md](conventions.md)                   |
+| SEO for public pages                    | [seo.md](seo.md)                                   |
 
 Add repo-specific hard stops (domain rules, compliance, auth) as new files in this folder and list them here and in `AGENTS.md`.
 

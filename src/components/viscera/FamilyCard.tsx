@@ -2,6 +2,7 @@
 
 import type { VisceraFamily, VisceraView } from '@/lib/poe1/viscera/browse';
 import { tagLabel } from '@/lib/poe1/viscera/tags';
+import { slugify } from '@/lib/poe1/viscera/wikiParse';
 import {
   SlotIcon,
   SourceLine,
@@ -112,7 +113,10 @@ export function FamilyCard({
 }) {
   const tags = [...new Set(family.members.flatMap(m => m.tags))].slice(0, 5);
   return (
-    <article className="panel group/card flex flex-col gap-3 p-4 transition-colors hover:border-forge-gold/40">
+    <article
+      id={slugify(family.family)}
+      className="panel group/card scroll-mt-24 flex flex-col gap-3 p-4 transition-colors hover:border-forge-gold/40"
+    >
       <header className="flex items-start gap-3.5">
         <VisceraIcon icon={family.icon} slot={family.slot} />
         <div className="min-w-0 flex-1">

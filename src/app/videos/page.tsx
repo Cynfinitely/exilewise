@@ -2,17 +2,25 @@ import { SubscribeButton } from '@/components/videos/SubscribeButton';
 import { VideoGallery } from '@/components/videos/VideoGallery';
 import { CHANNEL } from '@/lib/youtube/channel';
 import { getLatestVideos } from '@/lib/youtube/feed';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { pageMetadata } from '@/lib/seo/metadata';
+import { breadcrumbJsonLd, videoListJsonLd } from '@/lib/seo/jsonld';
 
-export const metadata = {
-  title: 'Videos',
-  description:
-    'Path of Exile videos from Cyn: league starts, farming tests and build guides. New uploads appear here automatically.',
-};
+export const metadata = pageMetadata('/videos');
 
 export default async function VideosPage() {
   const videos = await getLatestVideos();
   return (
     <div className="space-y-12">
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Videos', path: '/videos' },
+          ]),
+          ...(videos.length ? [videoListJsonLd(videos)] : []),
+        ]}
+      />
       <header className="pt-2 text-center">
         <p className="eyebrow">YouTube · {CHANNEL.handle}</p>
         <h1 className="display mt-3 text-4xl sm:text-5xl">Videos</h1>

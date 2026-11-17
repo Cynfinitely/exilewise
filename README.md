@@ -37,6 +37,8 @@ npm run dev               # http://localhost:3000
 
 Set `LIBSQL_URL` / `LIBSQL_AUTH_TOKEN` to use a hosted (Turso) database instead of `data/poe2.db`.
 
+Optional for production: `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` (Search Console / Bing Webmaster meta-tag codes), `NEXT_PUBLIC_SITE_URL` (canonical origin, defaults to `https://exilewise.com`).
+
 ## The crafting brain (`src/lib/craft`)
 
 ```

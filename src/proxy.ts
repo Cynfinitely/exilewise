@@ -92,6 +92,6 @@ export const config = {
   matcher: [
     // Pages and API, prefetches included: the hidden-game gate must not be
     // skippable with a prefetch header. Static files need neither gate nor CSP.
-    '/((?!_next/static|_next/image|favicon.ico|icon.svg|robots.txt|sitemap.xml|poe1/viscera/.*\\.png).*)',
+    '/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon|manifest.webmanifest|robots.txt|sitemap.xml|.*opengraph-image|poe1/viscera/.*\\.png).*)',
   ],
 };

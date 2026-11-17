@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cinzel, Inter } from 'next/font/google';
 import './globals.css';
 import { AuroraBackdrop } from '@/components/brand/AuroraBackdrop';
@@ -6,6 +6,7 @@ import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import { getNavState } from '@/lib/games/selection';
+import { CHANNEL } from '@/lib/youtube/channel';
 
 const display = Cinzel({
   subsets: ['latin'],
@@ -19,9 +20,14 @@ const body = Inter({
   display: 'swap',
 });
 
-const DESCRIPTION =
-  'Exilewise is a free Path of Exile companion. Plan your Covens league Wickerman: every viscera, where it drops, its combined bonuses and picks for your build.';
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+const bingVerification = process.env.BING_SITE_VERIFICATION?.trim();
 
+/**
+ * Site-wide defaults only. Each page sets its own title, canonical and
+ * social data via `pageMetadata` (src/lib/seo), so nothing here may describe
+ * one specific page (no openGraph url/title).
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
@@ -29,20 +35,41 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} · Path of Exile companion`,
     template: `%s · ${SITE_NAME}`,
   },
-  description: DESCRIPTION,
-  openGraph: {
-    type: 'website',
-    siteName: SITE_NAME,
-    url: '/',
-    title: `${SITE_NAME} · Path of Exile companion`,
-    description: DESCRIPTION,
+  description:
+    'Free Path of Exile companion: Covens viscera, a Wickerman planner and videos.',
+  authors: [{ name: CHANNEL.name, url: CHANNEL.url }],
+  creator: CHANNEL.name,
+  publisher: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
+  formatDetection: { telephone: false, email: false, address: false },
+  ...(googleVerification || bingVerification
+    ? {
+        verification: {
+          ...(googleVerification ? { google: googleVerification } : {}),
+          ...(bingVerification
+            ? { other: { 'msvalidate.01': bingVerification } }
+            : {}),
+        },
+      }
+    : {}),
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  viewportFit: 'cover' as const,
+  viewportFit: 'cover',
+  themeColor: '#0a0908',
+  colorScheme: 'dark',
 };
 
 export default async function RootLayout({
