@@ -3,11 +3,12 @@ import { getPrices } from '@/lib/pricing/poe2scout';
 import { makePriceBook, type PriceBook } from '../engine/prices';
 
 const MEMO_MS = 60_000;
-let memo: { at: number; book: Promise<PriceBook> } | null = null;
+/** One memoized book per league (a handful of leagues at most). */
+const memo = new Map<string, { at: number; book: Promise<PriceBook> }>();
 
-async function load(): Promise<PriceBook> {
+async function load(league: string | undefined): Promise<PriceBook> {
   try {
-    const data = await getPrices();
+    const data = await getPrices(league);
     return makePriceBook({
       live: new Map(data.items.map(i => [i.apiId, i.priceExalted])),
       names: new Map(data.items.map(i => [i.apiId, i.name])),
@@ -20,10 +21,16 @@ async function load(): Promise<PriceBook> {
   }
 }
 
-/** Current currency prices (poe2scout cache, fallback table when offline). */
-export function loadPriceBook(): Promise<PriceBook> {
+/**
+ * Currency prices for a league (poe2scout cache, fallback table when
+ * offline). Omit `league` for the current softcore league.
+ */
+export function loadPriceBook(league?: string): Promise<PriceBook> {
+  const key = league ?? '';
   const now = Date.now();
-  if (memo && now - memo.at < MEMO_MS) return memo.book;
-  memo = { at: now, book: load() };
-  return memo.book;
+  const hit = memo.get(key);
+  if (hit && now - hit.at < MEMO_MS) return hit.book;
+  const book = load(league);
+  memo.set(key, { at: now, book });
+  return book;
 }

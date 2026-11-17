@@ -1,5 +1,6 @@
 /** Small stroke icons for the site nav and home page tool cards. */
-export type NavIconName = 'home' | 'items' | 'materials' | 'craft' | 'plans';
+export type NavIconName =
+  'home' | 'items' | 'materials' | 'craft' | 'plans' | 'viscera' | 'videos';
 
 const PATHS: Record<NavIconName, React.ReactNode> = {
   home: (
@@ -30,6 +31,18 @@ const PATHS: Record<NavIconName, React.ReactNode> = {
   plans: (
     <>
       <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z" />
+    </>
+  ),
+  videos: (
+    <>
+      <rect x="3" y="5.5" width="18" height="13" rx="3.5" />
+      <path d="m10 9.5 5 2.5-5 2.5z" />
+    </>
+  ),
+  viscera: (
+    <>
+      <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" />
+      <path d="M12 7.4V12l-2 2" />
     </>
   ),
 };

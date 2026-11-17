@@ -7,10 +7,13 @@ import {
   FAVORITES_KEY,
   parseFavorites,
   parsePlans,
+  parseWickerman,
   PLANS_KEY,
+  WICKERMAN_KEY,
   readRaw,
   type FavoriteBase,
   type SavedPlan,
+  type WickermanSlots,
 } from './localStore';
 
 function subscribe(onChange: () => void): () => void {
@@ -48,6 +51,14 @@ export function useFavorites(): FavoriteBase[] | undefined {
   const raw = useRaw(FAVORITES_KEY);
   return useMemo(
     () => (raw === undefined ? undefined : parseFavorites(raw)),
+    [raw]
+  );
+}
+
+export function useWickerman(): WickermanSlots | undefined {
+  const raw = useRaw(WICKERMAN_KEY);
+  return useMemo(
+    () => (raw === undefined ? undefined : parseWickerman(raw)),
     [raw]
   );
 }

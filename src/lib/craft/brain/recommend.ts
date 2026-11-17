@@ -20,6 +20,7 @@ export async function recommendBases(input: {
   limit?: number;
   baseCost?: number;
   prices?: PriceBook;
+  league?: string;
 }): Promise<BaseRecommendation[]> {
   const required = input.goal.filter(g => !g.optional);
   if (!required.length) return [];
@@ -72,7 +73,7 @@ export async function recommendBases(input: {
 
   recs.sort((a, b) => a.missing.length - b.missing.length || b.score - a.score);
 
-  const prices = input.prices ?? (await loadPriceBook());
+  const prices = input.prices ?? (await loadPriceBook(input.league));
   const top = recs.filter(r => r.missing.length === 0).slice(0, SOLVE_TOP);
   for (const r of top) {
     const plan = await solve({

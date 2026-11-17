@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server';
 import { repricePlan } from '@/lib/craft';
-import {
-  repriceSchema,
-  type PlanDrift,
-  type RepriceRequest,
-} from '@/lib/user/repriceRequest';
+import { repriceSchema, type PlanDrift } from '@/lib/user/repriceRequest';
+import { guardJsonPost } from '@/lib/security/api';
+import { getSelectedLeague } from '@/lib/games/selection';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,13 +31,16 @@ async function forEachLimited<T>(
  * stored shopping list (no re-simulation), so the Saved page can show drift.
  */
 export async function POST(request: Request) {
-  let body: RepriceRequest;
-  try {
-    body = repriceSchema.parse(await request.json());
-  } catch (err) {
-    console.error('[api/plans/reprice POST]', err);
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
-  }
+  const guard = await guardJsonPost(request, {
+    name: 'plans-reprice',
+    schema: repriceSchema,
+    // Up to REPRICE_LIMIT stored plans with their method breakdowns.
+    maxBytes: 2_000_000,
+    perMinute: 30,
+  });
+  if (!guard.ok) return guard.response;
+  const body = guard.body;
+  const league = await getSelectedLeague('poe2');
 
   const drift: Record<string, PlanDrift> = {};
   await forEachLimited(
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
       const savedCheapest = plan.methods[0];
       if (savedCheapest?.estCostExalted == null) return;
       try {
-        const now = (await repricePlan(plan)).get(savedCheapest.id);
+        const now = (await repricePlan(plan, league)).get(savedCheapest.id);
         if (now != null) {
           drift[id] = {
             savedCostExalted: savedCheapest.estCostExalted,

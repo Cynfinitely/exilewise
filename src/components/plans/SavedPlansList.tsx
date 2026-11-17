@@ -35,7 +35,7 @@ function craftHref(p: SavedPlan): string {
   if (p.plan.current) params.set('current', formatCurrentMods(p.plan.current));
   if (p.plan.baseCostExalted)
     params.set('cost', String(p.plan.baseCostExalted));
-  return `/craft?${params.toString()}`;
+  return `/poe2/craft?${params.toString()}`;
 }
 
 function DriftLine({ d }: { d: PlanDrift }) {
@@ -116,7 +116,7 @@ export function SavedPlansList({
         <EmptyState
           title="No saved plans yet"
           action={
-            <Link href="/craft" className="btn btn-primary tap">
+            <Link href="/poe2/craft" className="btn btn-primary tap">
               Plan a craft
             </Link>
           }

@@ -1,26 +1,52 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { resolveItem } from '@/lib/import/resolveItem';
-import { parseGoalList, solve, type CurrentMod } from '@/lib/craft';
+import { parseGoalList, solve } from '@/lib/craft';
+import { guardJsonPost } from '@/lib/security/api';
+import { getSelectedLeague } from '@/lib/games/selection';
 
 export const dynamic = 'force-dynamic';
 
-interface FinishRequest {
-  /** Pasted in-game item text — the item's current mods are inferred. */
-  text?: string;
-  /** Explicit input instead of text. */
-  baseId?: string;
-  itemLevel?: number;
-  current?: CurrentMod[];
-  /** Desired FINAL mod set (goal entries: "Group", "Group@<minLevel>", "~d", "~o"). */
-  desiredGroups?: string[];
-  /** Cost of another copy of the item (restart cost), in Exalted. */
-  baseCostExalted?: number;
-}
+const shortText = z.string().min(1).max(200);
+
+const bodySchema = z
+  .object({
+    /** Pasted in-game item text — the item's current mods are inferred. */
+    text: z.string().max(20_000).optional(),
+    /** Explicit input instead of text. */
+    baseId: shortText.optional(),
+    itemLevel: z.number().int().min(1).max(100).optional(),
+    current: z
+      .array(
+        z.object({
+          group: shortText,
+          side: z.enum(['prefix', 'suffix']),
+          level: z.number().int().min(0).max(100),
+          fractured: z.boolean().optional(),
+          desecrated: z.boolean().optional(),
+        })
+      )
+      .max(12)
+      .optional(),
+    /** Desired FINAL mod set (goal entries: "Group", "Group@<minLevel>", "~d", "~o"). */
+    desiredGroups: z.array(shortText).min(1).max(12),
+    /** Cost of another copy of the item (restart cost), in Exalted. */
+    baseCostExalted: z.number().min(0).max(1_000_000_000).optional(),
+  })
+  .strict();
 
 export async function POST(request: Request) {
+  const guard = await guardJsonPost(request, {
+    name: 'craft-finish',
+    schema: bodySchema,
+    maxBytes: 32_000,
+    perMinute: 20,
+  });
+  if (!guard.ok) return guard.response;
+  const body = guard.body;
+
   try {
-    const body = (await request.json()) as FinishRequest;
-    const goal = parseGoalList((body.desiredGroups ?? []).join(','));
+    const goal = parseGoalList(body.desiredGroups.join(','));
     if (goal.length === 0) {
       return NextResponse.json(
         { error: 'desiredGroups is required (the FINAL mod set to reach).' },
@@ -66,6 +92,7 @@ export async function POST(request: Request) {
       goal,
       current,
       baseCost: body.baseCostExalted,
+      league: await getSelectedLeague('poe2'),
     });
     if (!plan) {
       return NextResponse.json(

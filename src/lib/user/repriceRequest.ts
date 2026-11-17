@@ -24,5 +24,3 @@ export interface PlanDrift {
   nowCostExalted: number;
   divinePriceExalted: number;
 }
-
-export type RepriceRequest = z.infer<typeof repriceSchema>;

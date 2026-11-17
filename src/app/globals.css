@@ -2,52 +2,90 @@
 @source '../**/*.{ts,tsx}';
 
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  /* Self-hosted by next/font in layout.tsx (CSP-safe: font-src 'self'). */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cinzel), 'Trajan Pro', Georgia, serif;
 
-  --text-2xs: 0.6875rem;
-  --text-2xs--line-height: 1rem;
+  /* Readability: nothing on the site renders below ~12.5px. */
+  --text-2xs: 0.75rem;
+  --text-2xs--line-height: 1.1rem;
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.25rem;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.45rem;
 
-  /* Soft pastel lavender + mint palette. Token names stay `forge` so components don't churn. */
-  --color-forge-bg: #f7f5fc;
-  --color-forge-panel: #ffffff;
-  --color-forge-panel2: #efeaf8;
-  --color-forge-border: #dcd3ee;
-  /* Primary: deep lavender, dark enough for white text and small links. */
-  --color-forge-gold: #5b4a9e;
-  --color-forge-goldbright: #2f2a45;
-  /* Secondary text; solid so it keeps ≥4.5:1 on every surface. */
-  --color-forge-muted: #5f5878;
-  /* Accent for rings, hover borders and active states. */
-  --color-forge-rust: #9d8de0;
-  /* Accent dark enough for small text (≥4.5:1 on panel2). */
-  --color-forge-rust-strong: #5f4fb0;
-  /* Soft secondary accents (active dots, card strips). */
-  --color-forge-mint: #bfe6d6;
-  --color-forge-peach: #f9d9c8;
-  --color-forge-sky: #cfe2f6;
+  /*
+   * "Ember & aurora": Path of Exile's warm black stone, parchment text and
+   * burnished gold, with a cool teal/violet aurora. Token names stay `forge`
+   * so components don't churn.
+   */
+  --color-forge-bg: #0a0908;
+  --color-forge-panel: #13110e;
+  --color-forge-panel2: #1b1814;
+  --color-forge-border: #342d23;
+  /* Primary: burnished gold (buttons, active states). Text on it is ink. */
+  --color-forge-gold: #c9a35f;
+  --color-forge-ink: #140f08;
+  /* Main text: parchment. */
+  --color-forge-goldbright: #ece2cd;
+  /* Secondary text; ≥7:1 on every panel so long descriptions stay legible. */
+  --color-forge-muted: #c2b8a3;
+  /* Accent for rings, hover borders and active states: unique-item orange. */
+  --color-forge-rust: #b8692c;
+  /* Accent strong enough for small text. */
+  --color-forge-rust-strong: #e4a862;
+  /* Aurora accents used as soft fills. */
+  --color-forge-mint: #17332f;
+  --color-forge-peach: #33201a;
+  --color-forge-sky: #172437;
+  --color-aurora-teal: #4fd1b8;
+  --color-aurora-violet: #9a7cf0;
+  --color-ember: #f08a3c;
 
-  --color-affix-prefix: #5b4a9e;
-  --color-affix-suffix: #2b6f62;
+  --color-affix-prefix: #e4a862;
+  --color-affix-suffix: #6fd5c2;
 
-  --color-rarity-normal: #2f2a45;
-  --color-rarity-magic: #3a56c0;
-  --color-rarity-rare: #855700;
-  --color-rarity-unique: #9a4a26;
-  --color-rarity-currency: #2f2a45;
+  /* The game's own item text colours. */
+  --color-rarity-normal: #c8c8c8;
+  --color-rarity-magic: #a9a9ff;
+  --color-rarity-rare: #f2e38a;
+  --color-rarity-unique: #d9803a;
+  --color-rarity-currency: #b5a988;
 
-  /* Semantic feedback tones; fg passes AA on its own bg and on the panels. */
-  --color-success-fg: #2a6a4c;
-  --color-success-bg: #e2f4eb;
-  --color-success-border: #a8d8c2;
-  --color-warn-fg: #855700;
-  --color-warn-bg: #fdf0d8;
-  --color-warn-border: #efcf95;
-  --color-danger-fg: #a0324a;
-  --color-danger-bg: #fbe4ea;
-  --color-danger-border: #eeb0bf;
-  --color-info-fg: #2b5d8c;
-  --color-info-bg: #e3eefa;
-  --color-info-border: #a9c6e6;
+  /* Semantic feedback tones on dark panels; fg passes AA on its bg. */
+  --color-success-fg: #86d8a8;
+  --color-success-bg: #11241a;
+  --color-success-border: #2b5a3f;
+  --color-warn-fg: #ecc56e;
+  --color-warn-bg: #261d0d;
+  --color-warn-border: #5f4a1c;
+  --color-danger-fg: #f19393;
+  --color-danger-bg: #2a1213;
+  --color-danger-border: #6b2c2e;
+  --color-info-fg: #9cc0ff;
+  --color-info-bg: #111b2b;
+  --color-info-border: #2d4669;
+
+  --animate-aurora: aurora 28s ease-in-out infinite alternate;
+  --animate-ember: ember 6s ease-in-out infinite;
+
+  @keyframes aurora {
+    0% {
+      transform: translate3d(-4%, 0, 0) rotate(-2deg) scale(1);
+    }
+    100% {
+      transform: translate3d(4%, 2%, 0) rotate(3deg) scale(1.08);
+    }
+  }
+  @keyframes ember {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 0.95;
+    }
+  }
 }
 
 /* Tailwind v3 defaults that v4 changed, kept so the UI looks the same. */
@@ -57,46 +95,65 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-forge-border, currentColor);
   }
 
   input::placeholder,
   textarea::placeholder {
-    color: var(--color-gray-400);
+    color: var(--color-forge-muted);
+    opacity: 0.75;
   }
 
   button:not(:disabled),
   [role='button']:not(:disabled) {
     cursor: pointer;
   }
+
+  ::selection {
+    background: rgb(201 163 95 / 0.35);
+    color: var(--color-forge-goldbright);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  select option,
+  select optgroup {
+    background: var(--color-forge-panel2);
+    color: var(--color-forge-goldbright);
+  }
 }
 
 :root {
+  color-scheme: dark;
   /* Height of the sticky site header; sticky page toolbars sit below it. */
-  --nav-height: 3.75rem;
-}
-
-html,
-body {
-  background-color: var(--color-forge-bg);
-  color: var(--color-forge-goldbright);
-  overflow-x: clip;
+  --nav-height: 4rem;
 }
 
 html {
-  scroll-padding-top: var(--nav-height);
+  /* 17px base: every rem-based size and spacing scales with it. */
+  font-size: 106.25%;
+  line-height: 1.6;
+  /* The page backdrop lives on <html>: a <body> background would paint over
+     the fixed -z-10 aurora layer. */
+  background-color: var(--color-forge-bg);
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgb(40 33 24 / 0.9), transparent 60%),
+    radial-gradient(90% 60% at 50% 120%, rgb(60 22 8 / 0.45), transparent 70%);
+  background-attachment: fixed;
+  color: var(--color-forge-goldbright);
+  overflow-x: clip;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-image:
-    radial-gradient(ellipse at top, rgba(157, 141, 224, 0.18), transparent 60%),
-    radial-gradient(
-      ellipse at bottom right,
-      rgba(143, 207, 181, 0.16),
-      transparent 55%
-    );
   min-height: 100vh;
+  overflow-x: clip;
+  color: var(--color-forge-goldbright);
 }
 
 @layer base {
@@ -104,38 +161,68 @@ body {
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
+  select:focus-visible,
   [role='tab']:focus-visible,
   [role='option']:focus-visible,
   [tabindex]:not([tabindex='-1']):focus-visible {
-    @apply rounded-xs outline-hidden ring-2 ring-forge-rust/60 ring-offset-1 ring-offset-forge-bg;
+    @apply rounded-xs outline-hidden ring-2 ring-forge-gold/70 ring-offset-2 ring-offset-forge-bg;
   }
 }
 
 @layer components {
   .container-shell {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 xl:max-w-7xl 2xl:max-w-[1400px];
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 xl:max-w-7xl;
   }
 
+  /* Display type: carved-stone serif for titles. */
+  .display {
+    @apply font-display font-semibold tracking-[0.04em] text-forge-goldbright;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs font-semibold uppercase tracking-[0.16em] text-forge-rust-strong;
+  }
+
+  /* Dark glass slab with a gilded hairline along the top edge. */
   .panel {
-    @apply rounded-xl border border-forge-border bg-forge-panel shadow-[0_1px_3px_rgba(91,74,158,0.06)];
+    @apply rounded-2xl border border-forge-border/80 bg-forge-panel/80 backdrop-blur-md;
+    box-shadow:
+      inset 0 1px 0 rgb(201 163 95 / 0.12),
+      0 18px 40px -24px rgb(0 0 0 / 0.9);
   }
 
   .panel-inset {
-    @apply rounded-lg border border-forge-border/80 bg-forge-panel2;
+    @apply rounded-xl border border-forge-border/70 bg-forge-panel2/70;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-forge-border bg-forge-panel px-3 py-1.5 text-sm font-medium text-forge-goldbright transition-colors hover:border-forge-rust/60 hover:bg-forge-panel2 hover:text-forge-rust-strong focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/50 focus-visible:ring-offset-2 focus-visible:ring-offset-forge-bg disabled:cursor-not-allowed disabled:opacity-50 max-sm:min-h-[2.5rem];
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-forge-border bg-forge-panel2/80 px-3.5 py-1.5 text-sm font-medium text-forge-goldbright transition-[color,background-color,border-color,box-shadow] duration-200 hover:border-forge-gold/60 hover:text-forge-rust-strong focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-forge-bg disabled:cursor-not-allowed disabled:opacity-50 max-sm:min-h-[2.5rem];
   }
 
-  /* The main action in a region; one per view where possible. */
+  /* The main action in a region: a gilded plate. One per view where possible. */
   .btn-primary {
-    @apply border-forge-gold bg-forge-gold text-white shadow-xs hover:border-forge-rust-strong hover:bg-forge-rust-strong hover:text-white disabled:hover:bg-forge-gold;
+    @apply border-forge-gold/80 text-forge-ink hover:border-forge-rust-strong hover:text-forge-ink;
+    background-image: linear-gradient(
+      180deg,
+      #e2c27f 0%,
+      #c9a35f 45%,
+      #9c7638 100%
+    );
+    box-shadow:
+      inset 0 1px 0 rgb(255 240 200 / 0.45),
+      0 0 0 1px rgb(0 0 0 / 0.4),
+      0 8px 24px -10px rgb(232 160 80 / 0.55);
+  }
+  .btn-primary:hover {
+    box-shadow:
+      inset 0 1px 0 rgb(255 240 200 / 0.55),
+      0 0 0 1px rgb(0 0 0 / 0.4),
+      0 10px 30px -8px rgb(240 138 60 / 0.75);
   }
 
   /* Low-emphasis text action (Clear, Revert, Load sample). */
   .btn-ghost {
-    @apply border-transparent bg-transparent px-2 text-forge-muted underline-offset-2 hover:border-transparent hover:text-forge-goldbright hover:underline;
+    @apply border-transparent bg-transparent px-2 text-forge-muted underline-offset-4 hover:border-transparent hover:text-forge-goldbright hover:underline;
   }
 
   .btn-danger {
@@ -143,28 +230,44 @@ body {
   }
 
   .btn-sm {
-    @apply gap-1 px-2 py-0.5 text-xs max-sm:min-h-0;
+    @apply gap-1 px-2.5 py-0.5 text-xs max-sm:min-h-0;
   }
 
   .input {
-    @apply w-full rounded-lg border border-forge-border bg-forge-panel px-3 py-2 text-sm text-forge-goldbright placeholder:text-forge-muted/80 focus:border-forge-rust/60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-rust/40 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply w-full rounded-lg border border-forge-border bg-forge-bg/60 px-3 py-2 text-sm text-forge-goldbright focus:border-forge-gold/60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-forge-gold/40 disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .label {
-    @apply text-xs font-medium text-forge-muted;
+    @apply text-xs font-medium tracking-wide text-forge-muted;
   }
 
   /* Small uppercase heading for page sections. */
   .section-title {
-    @apply text-sm font-semibold uppercase tracking-wide text-forge-muted;
+    @apply font-display text-xs font-semibold uppercase tracking-[0.16em] text-forge-muted;
   }
 
   .badge {
-    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-2xs font-medium;
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-2xs font-medium tracking-wide;
   }
 
   .tag-chip {
-    @apply inline-flex items-center rounded-full border border-forge-border bg-forge-panel2 px-2 py-0.5 text-xs text-forge-gold;
+    @apply inline-flex items-center rounded-full border border-forge-border bg-forge-panel2 px-2 py-0.5 text-xs text-forge-muted;
+  }
+
+  /* PoE-style separator: hairline – diamond – hairline. */
+  .ornament {
+    @apply flex items-center gap-3 text-forge-gold/70;
+  }
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    @apply h-px flex-1;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(201 163 95 / 0.55),
+      transparent
+    );
   }
 
   .table-scroll {
@@ -179,6 +282,17 @@ body {
 /* WCAG minimum touch target on coarse pointers; desktop keeps compact sizing. */
 @utility tap {
   @apply max-md:min-h-11 max-md:min-w-11;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* thin scrollbars */

@@ -43,7 +43,7 @@ function finishHref(r: ResolvedItem): string | null {
     current,
     groups: r.desiredGroups.join(','),
   });
-  return `/craft?${p.toString()}`;
+  return `/poe2/craft?${p.toString()}`;
 }
 
 interface ResolvedMod {
@@ -307,7 +307,7 @@ export function PasteImport() {
                       </div>
                     </div>
                     <Link
-                      href={`/craft?${new URLSearchParams({
+                      href={`/poe2/craft?${new URLSearchParams({
                         mode: 'base',
                         base: it.baseId,
                         ilvl: String(Math.max(it.itemLevel, 1)),

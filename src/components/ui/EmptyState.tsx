@@ -12,9 +12,7 @@ export function EmptyState({
 }) {
   return (
     <div className={`panel px-4 py-8 text-center sm:px-8 ${className}`}>
-      {title ? (
-        <p className="font-semibold text-forge-goldbright">{title}</p>
-      ) : null}
+      {title ? <p className="display text-lg">{title}</p> : null}
       {children ? (
         <div
           className={`mx-auto max-w-prose text-sm text-forge-muted ${title ? 'mt-1' : ''}`}

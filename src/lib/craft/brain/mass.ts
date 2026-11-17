@@ -36,8 +36,9 @@ export async function massCraft(input: {
   techniqueId: string;
   basesCount: number;
   baseCost?: number;
+  league?: string;
 }): Promise<MassCraftPlan | null> {
-  const prices = await loadPriceBook();
+  const prices = await loadPriceBook(input.league);
   const built = await buildContext({ ...input, prices });
   if (!built) return null;
   const { ctx } = built;

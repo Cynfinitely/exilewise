@@ -126,6 +126,9 @@ export interface PobImportResult {
  * Imports gear from a pasted PoB2 build code (or raw PoB item text blocks):
  * decodes, extracts items, resolves each rare to base + mod groups.
  */
+/** A full build with swap sets has well under this many items. */
+const MAX_POB_ITEMS = 80;
+
 export async function importPobText(raw: string): Promise<PobImportResult> {
   const warnings: string[] = [];
   let blocks: string[];
@@ -150,6 +153,13 @@ export async function importPobText(raw: string): Promise<PobImportResult> {
         'Input is neither a PoB build code nor item text (expected a base64 code or blocks starting with "Rarity:").',
       ],
     };
+  }
+
+  if (blocks.length > MAX_POB_ITEMS) {
+    warnings.push(
+      `Only the first ${MAX_POB_ITEMS} of ${blocks.length} items were checked.`
+    );
+    blocks = blocks.slice(0, MAX_POB_ITEMS);
   }
 
   const items: ResolvedMetaItem[] = [];

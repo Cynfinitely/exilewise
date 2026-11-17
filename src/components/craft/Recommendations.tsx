@@ -56,7 +56,7 @@ export function Recommendations({
       groups: goalParam,
     });
     if (baseCost) p.set('cost', String(baseCost));
-    return `/craft?${p.toString()}`;
+    return `/poe2/craft?${p.toString()}`;
   };
 
   return (

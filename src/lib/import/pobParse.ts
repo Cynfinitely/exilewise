@@ -8,6 +8,9 @@ import { inflateSync } from 'node:zlib';
  */
 
 /** Decodes a PoB build code into its XML payload (null if not a PoB code). */
+/** Inflated XML cap: real builds are well under 1 MB; this stops zip bombs. */
+const MAX_POB_XML_BYTES = 8 * 1024 * 1024;
+
 export function decodePobCode(code: string): string | null {
   const cleaned = code.trim().replace(/\s+/g, '');
   if (cleaned.length < 40 || !/^[A-Za-z0-9_\-+/=]+$/.test(cleaned)) {
@@ -15,7 +18,9 @@ export function decodePobCode(code: string): string | null {
   }
   const b64 = cleaned.replace(/-/g, '+').replace(/_/g, '/');
   try {
-    const xml = inflateSync(Buffer.from(b64, 'base64')).toString('utf8');
+    const xml = inflateSync(Buffer.from(b64, 'base64'), {
+      maxOutputLength: MAX_POB_XML_BYTES,
+    }).toString('utf8');
     return xml.includes('<PathOfBuilding') || xml.includes('<Item')
       ? xml
       : null;

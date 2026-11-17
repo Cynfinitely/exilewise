@@ -24,6 +24,8 @@ export interface SolveInput {
   stage1Attempts?: number;
   techniques?: AnyTechnique[];
   prices?: PriceBook;
+  /** Price league; omitted = current softcore league. Ignored with `prices`. */
+  league?: string;
 }
 
 const planCache = new Lru<Promise<CraftPlan | null>>(200);
@@ -41,9 +43,9 @@ function goalKey(input: SolveInput): string {
 
 /** Ranks every applicable technique (with its best options) for a goal on one base. */
 export async function solve(input: SolveInput): Promise<CraftPlan | null> {
-  const prices = input.prices ?? (await loadPriceBook());
+  const prices = input.prices ?? (await loadPriceBook(input.league));
   const cacheable = !input.techniques && !input.prices;
-  const key = `${goalKey(input)}|${prices.fetchedAt}|${ENGINE_VERSION}`;
+  const key = `${goalKey(input)}|${prices.league ?? ''}|${prices.fetchedAt}|${ENGINE_VERSION}`;
   if (cacheable) {
     const hit = planCache.get(key);
     if (hit) return hit;

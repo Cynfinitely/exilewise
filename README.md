@@ -30,6 +30,8 @@ npm run dev               # http://localhost:3000
 | `npm run data:materials`          | Re-download the poe2scout material catalog.                              |
 | `npm run data:seed`               | Rebuild `data/poe2.db` from the snapshot.                                |
 | `npm run data:setup`              | Refresh + materials + seed (run after each PoE2 patch).                  |
+| `npm run data:viscera`            | Re-download PoE 1 Covens viscera + icons from poewiki (rate limited).    |
+| `npm run data:viscera-trade`      | Map each viscera to its trade-site type/stat ids (run after the above).  |
 | `npm run dev` / `build` / `start` | Next.js dev server / production build / serve.                           |
 | `npm test`                        | Engine, technique, optimizer and import tests.                           |
 

@@ -131,7 +131,7 @@ export function SavePlanButton({ plan }: { plan: CraftPlan }) {
         <Alert tone="success">
           Plan saved.{' '}
           <Link
-            href="/plans"
+            href="/poe2/plans"
             className="font-medium underline underline-offset-2"
           >
             View saved plans

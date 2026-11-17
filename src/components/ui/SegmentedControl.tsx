@@ -58,7 +58,7 @@ export function SegmentedControl<T extends string>({
   return (
     <div className="overflow-x-auto md:overflow-visible">
       <div
-        className="flex min-w-max gap-1 rounded-md border border-forge-border bg-forge-panel2 p-1 md:w-full md:min-w-0"
+        className="flex min-w-max gap-1 rounded-xl border border-forge-border bg-forge-bg/50 p-1 md:w-full md:min-w-0"
         role="radiogroup"
         aria-label={label}
         onKeyDown={onKeyDown}
@@ -76,10 +76,10 @@ export function SegmentedControl<T extends string>({
               aria-checked={selected}
               tabIndex={selected ? 0 : -1}
               onClick={() => onChange(opt.value)}
-              className={`tap shrink-0 rounded-sm px-3 py-1.5 text-sm transition-colors md:flex-1 md:shrink ${
+              className={`tap shrink-0 rounded-lg px-3 py-1.5 text-sm tracking-wide transition-colors md:flex-1 md:shrink ${
                 selected
-                  ? 'bg-forge-panel font-semibold text-forge-goldbright shadow-xs ring-1 ring-forge-rust/50'
-                  : 'text-forge-muted hover:bg-forge-panel/60 hover:text-forge-goldbright'
+                  ? 'bg-forge-panel2 font-semibold text-forge-rust-strong shadow-[inset_0_1px_0_rgb(201_163_95/0.2)] ring-1 ring-forge-gold/40'
+                  : 'text-forge-muted hover:bg-forge-panel2/60 hover:text-forge-goldbright'
               }`}
             >
               {labelFor(opt)}

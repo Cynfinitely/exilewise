@@ -22,7 +22,7 @@ export function StepBreadcrumb({
               <span
                 className={`num flex h-5 w-5 items-center justify-center rounded-full text-2xs ${
                   step.active
-                    ? 'bg-forge-gold text-white'
+                    ? 'bg-forge-gold text-forge-ink'
                     : step.done
                       ? 'bg-forge-mint text-affix-suffix'
                       : 'bg-forge-panel text-forge-muted ring-1 ring-forge-border'

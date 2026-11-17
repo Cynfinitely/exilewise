@@ -18,9 +18,10 @@ export type * from './types';
  * breakdown and map to null.
  */
 export async function repricePlan(
-  plan: CraftPlan
+  plan: CraftPlan,
+  league?: string
 ): Promise<Map<string, number | null>> {
-  const prices = await loadPriceBook();
+  const prices = await loadPriceBook(league);
   return new Map(
     plan.methods.map(m => [m.id, repriceMethod(m, id => prices.price(id))])
   );

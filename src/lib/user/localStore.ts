@@ -8,6 +8,7 @@
  */
 import { z } from 'zod';
 import type { CraftPlan } from '@/lib/craft/types';
+import { VISCERA_SLOTS, type VisceraSlot } from '@/lib/poe1/viscera/types';
 
 export const PLANS_KEY = 'exilewise:plans:v1';
 export const FAVORITES_KEY = 'exilewise:favorites:v1';
@@ -175,4 +176,38 @@ export function toggleFavorite(
     ? current.filter(f => f.baseId !== base.baseId)
     : [{ ...base, createdAt: now }, ...current];
   return write(storage, FAVORITES_KEY, next) ? !exists : null;
+}
+
+/* ------------------------- PoE 1 Wickerman ---------------------------- */
+
+export const WICKERMAN_KEY = 'exilewise:poe1:wickerman:v1';
+
+/** Viscera id per Wickerman slot. */
+export type WickermanSlots = Partial<Record<VisceraSlot, string>>;
+
+const visceraId = z.string().regex(/^[a-z0-9-]{1,80}$/);
+
+/** Keeps each valid slot on its own: one bad entry doesn't drop the rest. */
+export function parseWickerman(raw: string | null): WickermanSlots {
+  if (!raw) return {};
+  let data: unknown;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    return {};
+  }
+  if (typeof data !== 'object' || data === null) return {};
+  const out: WickermanSlots = {};
+  for (const slot of VISCERA_SLOTS) {
+    const id = visceraId.safeParse((data as Record<string, unknown>)[slot]);
+    if (id.success) out[slot] = id.data;
+  }
+  return out;
+}
+
+export function saveWickerman(
+  storage: KeyValueStorage | null,
+  slots: WickermanSlots
+): boolean {
+  return write(storage, WICKERMAN_KEY, slots);
 }

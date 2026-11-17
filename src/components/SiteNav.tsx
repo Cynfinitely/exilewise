@@ -3,52 +3,40 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { NavIcon, type NavIconName } from '@/components/ui/NavIcons';
+import { BrandMark } from '@/components/brand/BrandMark';
+import { GameSwitch, LeagueSelect } from '@/components/nav/GameLeagueControls';
+import { NavIcon } from '@/components/ui/NavIcons';
 import { Sheet } from '@/components/ui/Sheet';
+import {
+  ENABLED_GAMES,
+  GAMES,
+  gameFromPath,
+  navGroupsFor,
+  type GameId,
+  type GameNavItem as NavItem,
+  type LeagueOption,
+} from '@/lib/games/config';
 
-type NavItem = {
-  href: string;
-  label: string;
-  description: string;
-  icon: NavIconName;
+export interface SiteNavProps {
+  rememberedGame: GameId;
+  leagues: Partial<
+    Record<GameId, { options: LeagueOption[]; selected: string }>
+  >;
+}
+
+/** Primary call to action per game. */
+const CTA: Record<GameId, { href: string; label: string }> = {
+  poe1: { href: '/poe1/viscera#wickerman', label: 'Build a Wickerman' },
+  poe2: { href: '/poe2/craft', label: 'Plan a craft' },
 };
 
-const NAV_GROUPS: { label: string; links: NavItem[] }[] = [
-  {
-    label: 'PoE 2 · Browse',
-    links: [
-      {
-        href: '/items',
-        label: 'Items & Mods',
-        description: 'Bases and every mod that can roll',
-        icon: 'items',
-      },
-      {
-        href: '/materials',
-        label: 'Materials',
-        description: 'Currencies, essences, omens, prices',
-        icon: 'materials',
-      },
-    ],
-  },
-  {
-    label: 'PoE 2 · Plan',
-    links: [
-      {
-        href: '/craft',
-        label: 'Planner',
-        description: 'Find the cheapest way to craft an item',
-        icon: 'craft',
-      },
-      {
-        href: '/plans',
-        label: 'Saved Plans',
-        description: 'Reopen plans with today’s prices',
-        icon: 'plans',
-      },
-    ],
-  },
-];
+/** Site-wide link to the YouTube channel page, outside the game menus. */
+const VIDEOS: NavItem = {
+  href: '/videos',
+  label: 'Videos',
+  description: 'Latest uploads from the YouTube channel',
+  icon: 'videos',
+};
 
 function isActive(pathname: string, href: string): boolean {
   return pathname === href || (href !== '/' && pathname.startsWith(href));
@@ -59,20 +47,23 @@ function DesktopLink({ item, active }: { item: NavItem; active: boolean }) {
     <Link
       href={item.href}
       aria-current={active ? 'page' : undefined}
-      className={`relative inline-flex h-9 items-center gap-2 rounded-full px-3.5 text-sm transition-colors ${
+      className={`group relative inline-flex h-10 items-center gap-2 px-3 text-sm tracking-wide transition-colors ${
         active
-          ? 'bg-forge-panel2 font-semibold text-forge-gold ring-1 ring-forge-rust/40'
-          : 'text-forge-muted hover:bg-forge-panel2/70 hover:text-forge-goldbright'
+          ? 'text-forge-goldbright'
+          : 'text-forge-muted hover:text-forge-goldbright'
       }`}
     >
-      <NavIcon name={item.icon} />
+      <NavIcon
+        name={item.icon}
+        className={`h-4 w-4 ${active ? 'text-forge-rust-strong' : ''}`}
+      />
       {item.label}
-      {active ? (
-        <span
-          aria-hidden
-          className="absolute -bottom-[7px] left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-forge-mint"
-        />
-      ) : null}
+      <span
+        aria-hidden
+        className={`absolute inset-x-3 -bottom-[13px] h-px origin-center bg-linear-to-r from-transparent via-forge-gold to-transparent transition-transform duration-300 ${
+          active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-75'
+        }`}
+      />
     </Link>
   );
 }
@@ -91,29 +82,17 @@ function DrawerLink({
       href={item.href}
       onClick={onNavigate}
       aria-current={active ? 'page' : undefined}
-      className={`flex min-h-14 items-center gap-3 rounded-xl px-3 py-2 transition-colors ${
+      className={`flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 transition-colors ${
         active
-          ? 'bg-forge-panel2 ring-1 ring-forge-rust/40'
-          : 'hover:bg-forge-panel2/70'
+          ? 'border-forge-gold/40 bg-forge-panel2'
+          : 'border-transparent hover:bg-forge-panel2/70'
       }`}
     >
-      <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
-          active
-            ? 'bg-forge-gold text-white'
-            : 'bg-forge-panel2 text-forge-gold'
-        }`}
-      >
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-forge-border bg-forge-bg/60 text-forge-rust-strong">
         <NavIcon name={item.icon} className="h-5 w-5" />
       </span>
       <span className="min-w-0">
-        <span
-          className={`block text-base ${
-            active
-              ? 'font-semibold text-forge-gold'
-              : 'font-medium text-forge-goldbright'
-          }`}
-        >
+        <span className="block font-display text-base tracking-wide text-forge-goldbright">
           {item.label}
         </span>
         <span className="block truncate text-xs text-forge-muted">
@@ -124,7 +103,15 @@ function DrawerLink({
   );
 }
 
-export function SiteNav() {
+function GameLabel({ game }: { game: GameId }) {
+  return (
+    <span className="hidden h-8 items-center rounded-full border border-forge-border bg-forge-panel2/60 px-3 font-display text-xs font-semibold tracking-[0.18em] text-forge-rust-strong md:inline-flex">
+      {GAMES[game].short.toUpperCase()}
+    </span>
+  );
+}
+
+export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
@@ -138,60 +125,79 @@ export function SiteNav() {
 
   useEffect(() => {
     if (!drawerOpen) return;
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia('(min-width: 1024px)');
     const onChange = () => mq.matches && setDrawerOpen(false);
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
   }, [drawerOpen]);
 
+  const game = gameFromPath(pathname) ?? rememberedGame;
+  const { options = [], selected = '' } = leagues[game] ?? {};
+  const groups = navGroupsFor(game, selected);
+  const cta = CTA[game];
+  const multiGame = ENABLED_GAMES.length > 1;
   const homeActive = pathname === '/';
 
+  const overview: NavItem = {
+    href: GAMES[game].home,
+    label: 'Overview',
+    description: `All ${GAMES[game].name} tools`,
+    icon: 'home',
+  };
+
+  const controls = (wide: boolean) => (
+    <>
+      {multiGame ? <GameSwitch game={game} /> : <GameLabel game={game} />}
+      <LeagueSelect
+        key={game}
+        game={game}
+        options={options}
+        selected={selected}
+        className={wide ? 'w-full' : 'w-40 xl:w-44'}
+      />
+    </>
+  );
+
   return (
-    <header className="sticky top-0 z-50 border-b border-forge-border/80 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-forge-border/60 bg-forge-bg/75 backdrop-blur-xl">
       <a
         href="#main"
-        className="btn sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-[60]"
+        className="btn sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-60"
       >
         Skip to content
       </a>
       <nav
         aria-label="Main"
-        className="container-shell flex items-center gap-3 py-3"
+        className="container-shell flex h-(--nav-height) items-center gap-4"
       >
         <Link
           href="/"
           aria-current={homeActive ? 'page' : undefined}
-          className="mr-1 flex h-9 shrink-0 items-center gap-2 rounded-full pr-2 text-forge-goldbright"
           aria-label="Exilewise — home"
+          className="tap flex shrink-0 items-center gap-2.5"
         >
-          <span
-            aria-hidden
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-forge-rust to-forge-mint text-xs font-bold text-forge-goldbright"
-          >
-            Ew
-          </span>
-          <span className="text-base font-bold tracking-tight">
-            Exile<span className="font-medium text-forge-muted">wise</span>
+          <BrandMark className="h-9 w-9 drop-shadow-[0_0_12px_rgb(240_138_60/0.35)]" />
+          <span className="display text-lg tracking-[0.14em]">
+            EXILE<span className="text-forge-gold">WISE</span>
           </span>
         </Link>
 
-        <div className="hidden min-w-0 flex-1 items-center gap-1 md:flex">
-          <span
-            className="mr-1 rounded-full bg-forge-mint px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-affix-suffix"
-            title="These tools are for Path of Exile 2"
-          >
-            PoE 2
-          </span>
-          {NAV_GROUPS.map((group, i) => (
+        <div className="hidden items-center gap-2 sm:flex">
+          {controls(false)}
+        </div>
+
+        <div className="hidden min-w-0 flex-1 items-center lg:flex">
+          <span aria-hidden className="mx-2 h-5 w-px bg-forge-border" />
+          {groups.length === 0 ? (
+            <DesktopLink item={overview} active={pathname === overview.href} />
+          ) : null}
+          {groups.map(group => (
             <div
               key={group.label}
               role="group"
-              aria-label={group.label}
-              className="flex items-center gap-1"
+              aria-label={`${GAMES[game].short} ${group.label}`}
+              className="flex items-center"
             >
-              {i > 0 ? (
-                <span aria-hidden className="mx-2 h-5 w-px bg-forge-border" />
-              ) : null}
               {group.links.map(link => (
                 <DesktopLink
                   key={link.href}
@@ -201,48 +207,52 @@ export function SiteNav() {
               ))}
             </div>
           ))}
+          <span aria-hidden className="mx-2 h-5 w-px bg-forge-border" />
+          <DesktopLink item={VIDEOS} active={isActive(pathname, VIDEOS.href)} />
         </div>
 
         <Link
-          href="/craft"
-          className="btn btn-primary hidden h-9 rounded-full px-4 lg:inline-flex"
+          href={cta.href}
+          className="btn btn-primary ml-auto hidden h-10 shrink-0 rounded-full px-5 font-display text-xs font-bold uppercase tracking-[0.16em] xl:inline-flex"
         >
-          Plan a craft
+          {cta.label}
         </Link>
 
         <button
           type="button"
-          className="btn tap ml-auto rounded-full md:hidden"
+          className="btn tap ml-auto rounded-full lg:hidden"
           aria-expanded={drawerOpen}
           aria-haspopup="dialog"
           onClick={() => setDrawerOpen(true)}
         >
-          <span aria-hidden className="flex flex-col gap-[3px]">
-            <span className="block h-0.5 w-4 rounded-sm bg-current" />
-            <span className="block h-0.5 w-4 rounded-sm bg-current" />
-            <span className="block h-0.5 w-4 rounded-sm bg-current" />
+          <span aria-hidden className="flex flex-col gap-0.75">
+            <span className="block h-px w-4 bg-current" />
+            <span className="block h-px w-4 bg-current" />
+            <span className="block h-px w-4 bg-current" />
           </span>
           Menu
         </button>
       </nav>
+      {/* Gilded hairline under the bar. */}
+      <div
+        aria-hidden
+        className="h-px bg-linear-to-r from-transparent via-forge-gold/40 to-transparent"
+      />
 
       <Sheet open={drawerOpen} onClose={closeDrawer} title="Menu" side="right">
-        <nav aria-label="Main (mobile)" className="space-y-4 p-3">
+        <nav aria-label="Main (mobile)" className="space-y-5 p-4">
+          <div className="space-y-2 sm:hidden">
+            <p className="section-title">League</p>
+            <div className="flex flex-col gap-2">{controls(true)}</div>
+          </div>
           <DrawerLink
-            item={{
-              href: '/',
-              label: 'Home',
-              description: 'Overview of every tool',
-              icon: 'home',
-            }}
-            active={homeActive}
+            item={overview}
+            active={pathname === overview.href}
             onNavigate={closeDrawer}
           />
-          {NAV_GROUPS.map(group => (
+          {groups.map(group => (
             <div key={group.label}>
-              <p className="mb-1 px-3 text-2xs font-semibold uppercase tracking-wide text-forge-muted">
-                {group.label}
-              </p>
+              <p className="section-title mb-2 px-1">{group.label}</p>
               <div className="flex flex-col gap-1">
                 {group.links.map(link => (
                   <DrawerLink
@@ -255,6 +265,14 @@ export function SiteNav() {
               </div>
             </div>
           ))}
+          <div>
+            <p className="section-title mb-2 px-1">Channel</p>
+            <DrawerLink
+              item={VIDEOS}
+              active={isActive(pathname, VIDEOS.href)}
+              onNavigate={closeDrawer}
+            />
+          </div>
         </nav>
       </Sheet>
     </header>

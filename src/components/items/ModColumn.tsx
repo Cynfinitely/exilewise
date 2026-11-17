@@ -49,7 +49,7 @@ export function ModColumn({
     p.set('base', baseId ?? '');
     p.set('ilvl', String(itemLevel ?? 82));
     p.set('groups', group);
-    return `/craft?${p.toString()}`;
+    return `/poe2/craft?${p.toString()}`;
   };
 
   return (

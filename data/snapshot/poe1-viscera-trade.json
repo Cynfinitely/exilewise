@@ -1,0 +1,3237 @@
+{
+  "source": "https://www.pathofexile.com/api/trade/data/{items,stats}",
+  "fetchedAt": "2026-11-17T10:35:03.470Z",
+  "refs": {
+    "lesser-scorched-arm": {
+      "type": "Scorched Arm",
+      "statIds": [
+        "explicit.stat_1335054179",
+        "implicit.stat_1335054179"
+      ],
+      "min": 10
+    },
+    "scorched-arm": {
+      "type": "Scorched Arm",
+      "statIds": [
+        "explicit.stat_1335054179",
+        "implicit.stat_1335054179"
+      ],
+      "min": 20
+    },
+    "greater-scorched-arm": {
+      "type": "Scorched Arm",
+      "statIds": [
+        "explicit.stat_2443492284",
+        "implicit.stat_2443492284"
+      ],
+      "min": 10
+    },
+    "lesser-severed-rhoa-head": {
+      "type": "Severed Rhoa Head",
+      "statIds": [
+        "explicit.stat_736967255",
+        "implicit.stat_736967255"
+      ],
+      "min": 10
+    },
+    "severed-rhoa-head": {
+      "type": "Severed Rhoa Head",
+      "statIds": [
+        "explicit.stat_736967255",
+        "implicit.stat_736967255"
+      ],
+      "min": 20
+    },
+    "greater-severed-rhoa-head": {
+      "type": "Severed Rhoa Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-sea-witchs-tentacle": {
+      "type": "Sea Witch's Tentacle",
+      "statIds": [
+        "explicit.stat_1589917703",
+        "implicit.stat_1589917703"
+      ],
+      "min": 10
+    },
+    "sea-witchs-tentacle": {
+      "type": "Sea Witch's Tentacle",
+      "statIds": [
+        "explicit.stat_1589917703",
+        "implicit.stat_1589917703"
+      ],
+      "min": 20
+    },
+    "greater-sea-witchs-tentacle": {
+      "type": "Sea Witch's Tentacle",
+      "statIds": [
+        "explicit.stat_755922799",
+        "implicit.stat_755922799"
+      ],
+      "min": 8
+    },
+    "lesser-crustaceans-claw": {
+      "type": "Crustacean's Claw",
+      "statIds": [
+        "explicit.stat_3032590688",
+        "implicit.stat_3032590688"
+      ],
+      "min": 3.5
+    },
+    "crustaceans-claw": {
+      "type": "Crustacean's Claw",
+      "statIds": [
+        "explicit.stat_3032590688",
+        "implicit.stat_3032590688"
+      ],
+      "min": 11.5
+    },
+    "greater-crustaceans-claw": {
+      "type": "Crustacean's Claw",
+      "statIds": [
+        "explicit.stat_3029185248",
+        "implicit.stat_2994988431",
+        "implicit.stat_3376335115"
+      ],
+      "min": 10
+    },
+    "lesser-totemic-visage": {
+      "type": "Totemic Visage",
+      "statIds": [
+        "explicit.stat_1538773178",
+        "implicit.stat_1538773178"
+      ],
+      "min": 10
+    },
+    "totemic-visage": {
+      "type": "Totemic Visage",
+      "statIds": [
+        "explicit.stat_1538773178",
+        "implicit.stat_1538773178"
+      ],
+      "min": 20
+    },
+    "greater-totemic-visage": {
+      "type": "Totemic Visage",
+      "statIds": [
+        "implicit.stat_261712318",
+        "implicit.stat_440826461"
+      ],
+      "min": 10
+    },
+    "lesser-skeletal-archers-arm": {
+      "type": "Skeletal Archer's Arm",
+      "statIds": [
+        "explicit.stat_883169830",
+        "implicit.stat_883169830"
+      ],
+      "min": 8
+    },
+    "skeletal-archers-arm": {
+      "type": "Skeletal Archer's Arm",
+      "statIds": [
+        "explicit.stat_883169830",
+        "implicit.stat_883169830"
+      ],
+      "min": 15
+    },
+    "greater-skeletal-archers-arm": {
+      "type": "Skeletal Archer's Arm",
+      "statIds": [
+        "explicit.stat_2067062068",
+        "implicit.stat_2067062068",
+        "implicit.stat_2902845638"
+      ],
+      "min": 2
+    },
+    "lesser-skeletal-warriors-leg": {
+      "type": "Skeletal Warrior's Leg",
+      "statIds": [],
+      "min": null
+    },
+    "skeletal-warriors-leg": {
+      "type": "Skeletal Warrior's Leg",
+      "statIds": [],
+      "min": null
+    },
+    "greater-skeletal-warriors-leg": {
+      "type": "Skeletal Warrior's Leg",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-wardens-arm": {
+      "type": "Warden's Arm",
+      "statIds": [
+        "explicit.stat_3299347043",
+        "implicit.stat_3299347043"
+      ],
+      "min": 35
+    },
+    "wardens-arm": {
+      "type": "Warden's Arm",
+      "statIds": [
+        "explicit.stat_3299347043",
+        "implicit.stat_3299347043"
+      ],
+      "min": 60
+    },
+    "greater-wardens-arm": {
+      "type": "Warden's Arm",
+      "statIds": [
+        "explicit.stat_2783958145",
+        "implicit.stat_1214601201",
+        "implicit.stat_137377270"
+      ],
+      "min": 5
+    },
+    "lesser-goatmans-horn": {
+      "type": "Goatman's Horn",
+      "statIds": [
+        "explicit.stat_280731498",
+        "implicit.stat_280731498"
+      ],
+      "min": 8
+    },
+    "goatmans-horn": {
+      "type": "Goatman's Horn",
+      "statIds": [
+        "explicit.stat_280731498",
+        "implicit.stat_280731498"
+      ],
+      "min": 15
+    },
+    "greater-goatmans-horn": {
+      "type": "Goatman's Horn",
+      "statIds": [
+        "implicit.stat_683595855"
+      ],
+      "min": 6
+    },
+    "lesser-mariners-tricorne": {
+      "type": "Mariner's Tricorne",
+      "statIds": [],
+      "min": null
+    },
+    "mariners-tricorne": {
+      "type": "Mariner's Tricorne",
+      "statIds": [],
+      "min": null
+    },
+    "greater-mariners-tricorne": {
+      "type": "Mariner's Tricorne",
+      "statIds": [
+        "implicit.stat_62884658"
+      ],
+      "min": 4
+    },
+    "lesser-elemental-essence": {
+      "type": "Elemental Essence",
+      "statIds": [
+        "explicit.stat_4220027924",
+        "implicit.stat_4220027924"
+      ],
+      "min": 14
+    },
+    "elemental-essence": {
+      "type": "Elemental Essence",
+      "statIds": [
+        "explicit.stat_4220027924",
+        "implicit.stat_4220027924"
+      ],
+      "min": 22
+    },
+    "greater-elemental-essence": {
+      "type": "Elemental Essence",
+      "statIds": [
+        "explicit.stat_3676141501",
+        "implicit.stat_3676141501"
+      ],
+      "min": 2
+    },
+    "lesser-galvanic-tentacle": {
+      "type": "Galvanic Tentacle",
+      "statIds": [
+        "explicit.stat_1671376347",
+        "implicit.stat_1671376347"
+      ],
+      "min": 14
+    },
+    "galvanic-tentacle": {
+      "type": "Galvanic Tentacle",
+      "statIds": [
+        "explicit.stat_1671376347",
+        "implicit.stat_1671376347"
+      ],
+      "min": 22
+    },
+    "greater-galvanic-tentacle": {
+      "type": "Galvanic Tentacle",
+      "statIds": [
+        "explicit.stat_1011760251",
+        "implicit.stat_1011760251"
+      ],
+      "min": 2
+    },
+    "lesser-sirens-tentacle": {
+      "type": "Siren's Tentacle",
+      "statIds": [
+        "explicit.stat_1793818220",
+        "implicit.stat_1793818220"
+      ],
+      "min": 10
+    },
+    "sirens-tentacle": {
+      "type": "Siren's Tentacle",
+      "statIds": [
+        "explicit.stat_1793818220",
+        "implicit.stat_1793818220"
+      ],
+      "min": 20
+    },
+    "greater-sirens-tentacle": {
+      "type": "Siren's Tentacle",
+      "statIds": [
+        "implicit.stat_1400414838"
+      ],
+      "min": 5
+    },
+    "lesser-cutthroats-head": {
+      "type": "Cutthroat's Head",
+      "statIds": [
+        "explicit.stat_1310194496",
+        "implicit.stat_1310194496"
+      ],
+      "min": 10
+    },
+    "cutthroats-head": {
+      "type": "Cutthroat's Head",
+      "statIds": [
+        "explicit.stat_1310194496",
+        "implicit.stat_1310194496"
+      ],
+      "min": 20
+    },
+    "greater-cutthroats-head": {
+      "type": "Cutthroat's Head",
+      "statIds": [
+        "explicit.stat_2839577586",
+        "implicit.stat_2839577586"
+      ],
+      "min": 30
+    },
+    "lesser-golemic-stone": {
+      "type": "Golemic Stone",
+      "statIds": [
+        "explicit.stat_4262448838",
+        "implicit.stat_4262448838"
+      ],
+      "min": 10
+    },
+    "golemic-stone": {
+      "type": "Golemic Stone",
+      "statIds": [
+        "explicit.stat_4262448838",
+        "implicit.stat_4262448838"
+      ],
+      "min": 20
+    },
+    "greater-golemic-stone": {
+      "type": "Golemic Stone",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-gargantuan-claws": {
+      "type": "Gargantuan Claws",
+      "statIds": [
+        "explicit.stat_1421645223",
+        "implicit.stat_1421645223"
+      ],
+      "min": 4
+    },
+    "gargantuan-claws": {
+      "type": "Gargantuan Claws",
+      "statIds": [
+        "explicit.stat_1421645223",
+        "implicit.stat_1421645223"
+      ],
+      "min": 8
+    },
+    "greater-gargantuan-claws": {
+      "type": "Gargantuan Claws",
+      "statIds": [
+        "explicit.stat_4249220643",
+        "implicit.stat_4249220643"
+      ],
+      "min": 10
+    },
+    "lesser-hollowed-skull": {
+      "type": "Hollowed Skull",
+      "statIds": [],
+      "min": null
+    },
+    "hollowed-skull": {
+      "type": "Hollowed Skull",
+      "statIds": [],
+      "min": null
+    },
+    "greater-hollowed-skull": {
+      "type": "Hollowed Skull",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-severed-scythe-hand": {
+      "type": "Severed Scythe-hand",
+      "statIds": [
+        "explicit.stat_2023107756",
+        "implicit.stat_2023107756"
+      ],
+      "min": 2
+    },
+    "severed-scythe-hand": {
+      "type": "Severed Scythe-hand",
+      "statIds": [
+        "explicit.stat_2023107756",
+        "implicit.stat_2023107756"
+      ],
+      "min": 4
+    },
+    "greater-severed-scythe-hand": {
+      "type": "Severed Scythe-hand",
+      "statIds": [
+        "implicit.stat_1214232297"
+      ],
+      "min": 5
+    },
+    "lesser-bonestalkers-ribcage": {
+      "type": "Bonestalker's Ribcage",
+      "statIds": [
+        "explicit.stat_511024200",
+        "implicit.stat_511024200"
+      ],
+      "min": 5
+    },
+    "bonestalkers-ribcage": {
+      "type": "Bonestalker's Ribcage",
+      "statIds": [
+        "explicit.stat_511024200",
+        "implicit.stat_511024200"
+      ],
+      "min": 7
+    },
+    "greater-bonestalkers-ribcage": {
+      "type": "Bonestalker's Ribcage",
+      "statIds": [
+        "explicit.stat_3771516363",
+        "implicit.stat_3771516363"
+      ],
+      "min": 4
+    },
+    "lesser-templar-skull": {
+      "type": "Templar Skull",
+      "statIds": [
+        "explicit.stat_1263695895",
+        "implicit.stat_1263695895"
+      ],
+      "min": 8
+    },
+    "templar-skull": {
+      "type": "Templar Skull",
+      "statIds": [
+        "explicit.stat_1263695895",
+        "implicit.stat_1263695895"
+      ],
+      "min": 15
+    },
+    "greater-templar-skull": {
+      "type": "Templar Skull",
+      "statIds": [
+        "implicit.stat_3708520172"
+      ],
+      "min": 8
+    },
+    "lesser-arachnid-fangs": {
+      "type": "Arachnid Fangs",
+      "statIds": [
+        "explicit.stat_795138349",
+        "implicit.stat_795138349"
+      ],
+      "min": 10
+    },
+    "arachnid-fangs": {
+      "type": "Arachnid Fangs",
+      "statIds": [
+        "explicit.stat_795138349",
+        "implicit.stat_795138349"
+      ],
+      "min": 20
+    },
+    "greater-arachnid-fangs": {
+      "type": "Arachnid Fangs",
+      "statIds": [
+        "explicit.stat_2907156609",
+        "implicit.stat_2907156609"
+      ],
+      "min": 10
+    },
+    "lesser-severed-stinger": {
+      "type": "Severed Stinger",
+      "statIds": [
+        "explicit.stat_818778753",
+        "implicit.stat_818778753"
+      ],
+      "min": 3
+    },
+    "severed-stinger": {
+      "type": "Severed Stinger",
+      "statIds": [
+        "explicit.stat_818778753",
+        "implicit.stat_818778753"
+      ],
+      "min": 6
+    },
+    "greater-severed-stinger": {
+      "type": "Severed Stinger",
+      "statIds": [
+        "implicit.stat_2705969278"
+      ],
+      "min": 10
+    },
+    "lesser-bandit-rogues-head": {
+      "type": "Bandit Rogue's Head",
+      "statIds": [
+        "explicit.stat_2672805335",
+        "implicit.stat_2672805335"
+      ],
+      "min": 4
+    },
+    "bandit-rogues-head": {
+      "type": "Bandit Rogue's Head",
+      "statIds": [
+        "explicit.stat_2672805335",
+        "implicit.stat_2672805335"
+      ],
+      "min": 8
+    },
+    "greater-bandit-rogues-head": {
+      "type": "Bandit Rogue's Head",
+      "statIds": [
+        "explicit.stat_2878959938",
+        "implicit.stat_2878959938"
+      ],
+      "min": 4
+    },
+    "lesser-poachers-leg": {
+      "type": "Poacher's Leg",
+      "statIds": [],
+      "min": null
+    },
+    "poachers-leg": {
+      "type": "Poacher's Leg",
+      "statIds": [],
+      "min": null
+    },
+    "greater-poachers-leg": {
+      "type": "Poacher's Leg",
+      "statIds": [
+        "implicit.stat_4276479762"
+      ],
+      "min": 40
+    },
+    "lesser-bandit-witchs-head": {
+      "type": "Bandit Witch's Head",
+      "statIds": [
+        "explicit.stat_4291461939",
+        "implicit.stat_4291461939"
+      ],
+      "min": 8
+    },
+    "bandit-witchs-head": {
+      "type": "Bandit Witch's Head",
+      "statIds": [
+        "explicit.stat_472520716",
+        "implicit.stat_472520716"
+      ],
+      "min": 15
+    },
+    "greater-bandit-witchs-head": {
+      "type": "Bandit Witch's Head",
+      "statIds": [
+        "explicit.stat_3002506763",
+        "implicit.stat_3002506763"
+      ],
+      "min": 8
+    },
+    "lesser-arachnid-leg": {
+      "type": "Arachnid Leg",
+      "statIds": [
+        "explicit.stat_3002506763",
+        "implicit.stat_3002506763"
+      ],
+      "min": 8
+    },
+    "arachnid-leg": {
+      "type": "Arachnid Leg",
+      "statIds": [
+        "explicit.stat_3002506763",
+        "implicit.stat_3002506763"
+      ],
+      "min": 15
+    },
+    "greater-arachnid-leg": {
+      "type": "Arachnid Leg",
+      "statIds": [
+        "implicit.stat_3660138886"
+      ],
+      "min": null
+    },
+    "lesser-bandit-warriors-head": {
+      "type": "Bandit Warrior's Head",
+      "statIds": [
+        "explicit.stat_836936635",
+        "implicit.stat_836936635"
+      ],
+      "min": 0.8
+    },
+    "bandit-warriors-head": {
+      "type": "Bandit Warrior's Head",
+      "statIds": [
+        "explicit.stat_836936635",
+        "implicit.stat_836936635"
+      ],
+      "min": 1.6
+    },
+    "greater-bandit-warriors-head": {
+      "type": "Bandit Warrior's Head",
+      "statIds": [
+        "explicit.stat_2201614328",
+        "implicit.stat_2201614328"
+      ],
+      "min": 3
+    },
+    "lesser-vaal-appendage": {
+      "type": "Vaal Appendage",
+      "statIds": [
+        "explicit.stat_2264295449",
+        "implicit.stat_2264295449"
+      ],
+      "min": 0.2
+    },
+    "vaal-appendage": {
+      "type": "Vaal Appendage",
+      "statIds": [
+        "explicit.stat_2264295449",
+        "implicit.stat_2264295449"
+      ],
+      "min": 0.4
+    },
+    "greater-vaal-appendage": {
+      "type": "Vaal Appendage",
+      "statIds": [
+        "explicit.stat_2257141320",
+        "implicit.stat_2257141320"
+      ],
+      "min": 30
+    },
+    "lesser-cobra-tail": {
+      "type": "Cobra Tail",
+      "statIds": [
+        "explicit.stat_2308278768",
+        "implicit.stat_2308278768"
+      ],
+      "min": 8
+    },
+    "cobra-tail": {
+      "type": "Cobra Tail",
+      "statIds": [
+        "explicit.stat_2308278768",
+        "implicit.stat_2308278768"
+      ],
+      "min": 15
+    },
+    "greater-cobra-tail": {
+      "type": "Cobra Tail",
+      "statIds": [
+        "implicit.stat_1607193320"
+      ],
+      "min": 15
+    },
+    "lesser-primate-foot": {
+      "type": "Primate Foot",
+      "statIds": [
+        "explicit.stat_581625445",
+        "implicit.stat_581625445"
+      ],
+      "min": 4
+    },
+    "primate-foot": {
+      "type": "Primate Foot",
+      "statIds": [
+        "explicit.stat_581625445",
+        "implicit.stat_581625445"
+      ],
+      "min": 8
+    },
+    "greater-primate-foot": {
+      "type": "Primate Foot",
+      "statIds": [
+        "implicit.stat_3548404923"
+      ],
+      "min": 5
+    },
+    "lesser-ursine-flesh": {
+      "type": "Ursine Flesh",
+      "statIds": [
+        "explicit.stat_1443060084",
+        "implicit.stat_1443060084"
+      ],
+      "min": 10
+    },
+    "ursine-flesh": {
+      "type": "Ursine Flesh",
+      "statIds": [
+        "explicit.stat_1443060084",
+        "implicit.stat_1443060084"
+      ],
+      "min": 20
+    },
+    "greater-ursine-flesh": {
+      "type": "Ursine Flesh",
+      "statIds": [
+        "implicit.stat_1710381148"
+      ],
+      "min": 75
+    },
+    "artificial-appendage-claw": {
+      "type": "Artificial Appendage",
+      "statIds": [
+        "explicit.stat_828179689",
+        "implicit.stat_828179689"
+      ],
+      "min": 20
+    },
+    "artificial-appendage-bludgeon": {
+      "type": "Artificial Appendage",
+      "statIds": [
+        "explicit.stat_1840985759",
+        "implicit.stat_1840985759"
+      ],
+      "min": 15
+    },
+    "artificial-appendage-minion": {
+      "type": "Artificial Appendage",
+      "statIds": [
+        "explicit.stat_491450213",
+        "implicit.stat_491450213"
+      ],
+      "min": 25
+    },
+    "lesser-captains-leg": {
+      "type": "Captain's Leg",
+      "statIds": [
+        "explicit.stat_2250533757",
+        "implicit.stat_2250533757"
+      ],
+      "min": 3
+    },
+    "captains-leg": {
+      "type": "Captain's Leg",
+      "statIds": [
+        "explicit.stat_2250533757",
+        "implicit.stat_2250533757"
+      ],
+      "min": 5
+    },
+    "greater-captains-leg": {
+      "type": "Captain's Leg",
+      "statIds": [
+        "explicit.stat_1311723478",
+        "implicit.stat_1311723478"
+      ],
+      "min": null
+    },
+    "lesser-spined-claws": {
+      "type": "Spined Claws",
+      "statIds": [
+        "explicit.stat_1923879260",
+        "implicit.stat_1923879260"
+      ],
+      "min": 10
+    },
+    "spined-claws": {
+      "type": "Spined Claws",
+      "statIds": [
+        "explicit.stat_1923879260",
+        "implicit.stat_1923879260"
+      ],
+      "min": 20
+    },
+    "greater-spined-claws": {
+      "type": "Spined Claws",
+      "statIds": [
+        "explicit.stat_3828375170",
+        "implicit.stat_3828375170"
+      ],
+      "min": 10
+    },
+    "lesser-molten-core": {
+      "type": "Molten Core",
+      "statIds": [
+        "explicit.stat_3372524247",
+        "implicit.stat_3372524247"
+      ],
+      "min": 14
+    },
+    "molten-core": {
+      "type": "Molten Core",
+      "statIds": [
+        "explicit.stat_3372524247",
+        "implicit.stat_3372524247"
+      ],
+      "min": 22
+    },
+    "greater-molten-core": {
+      "type": "Molten Core",
+      "statIds": [
+        "explicit.stat_4095671657",
+        "implicit.stat_4095671657"
+      ],
+      "min": 2
+    },
+    "lesser-defaced-bust": {
+      "type": "Defaced Bust",
+      "statIds": [
+        "explicit.stat_2511217560",
+        "implicit.stat_2511217560"
+      ],
+      "min": 10
+    },
+    "defaced-bust": {
+      "type": "Defaced Bust",
+      "statIds": [
+        "explicit.stat_2511217560",
+        "implicit.stat_2511217560"
+      ],
+      "min": 20
+    },
+    "greater-defaced-bust": {
+      "type": "Defaced Bust",
+      "statIds": [
+        "implicit.stat_4067960074"
+      ],
+      "min": 75
+    },
+    "lesser-spectral-hood": {
+      "type": "Spectral Hood",
+      "statIds": [
+        "explicit.stat_2923486259",
+        "implicit.stat_2923486259"
+      ],
+      "min": 7
+    },
+    "spectral-hood": {
+      "type": "Spectral Hood",
+      "statIds": [
+        "explicit.stat_2923486259",
+        "implicit.stat_2923486259"
+      ],
+      "min": 17
+    },
+    "greater-spectral-hood": {
+      "type": "Spectral Hood",
+      "statIds": [
+        "explicit.stat_1301765461",
+        "implicit.stat_1301765461"
+      ],
+      "min": 2
+    },
+    "lesser-soldiers-head": {
+      "type": "Soldier's Head",
+      "statIds": [
+        "explicit.stat_2866361420",
+        "implicit.stat_2866361420"
+      ],
+      "min": 10
+    },
+    "soldiers-head": {
+      "type": "Soldier's Head",
+      "statIds": [
+        "explicit.stat_2866361420",
+        "implicit.stat_2866361420"
+      ],
+      "min": 20
+    },
+    "greater-soldiers-head": {
+      "type": "Soldier's Head",
+      "statIds": [
+        "implicit.stat_1633157811"
+      ],
+      "min": 80
+    },
+    "lesser-flaming-ribbon": {
+      "type": "Flaming Ribbon",
+      "statIds": [],
+      "min": null
+    },
+    "flaming-ribbon": {
+      "type": "Flaming Ribbon",
+      "statIds": [],
+      "min": null
+    },
+    "greater-flaming-ribbon": {
+      "type": "Flaming Ribbon",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-statue-leg": {
+      "type": "Statue Leg",
+      "statIds": [
+        "explicit.stat_977908611",
+        "implicit.stat_977908611"
+      ],
+      "min": 10
+    },
+    "statue-leg": {
+      "type": "Statue Leg",
+      "statIds": [
+        "explicit.stat_977908611",
+        "implicit.stat_977908611"
+      ],
+      "min": 20
+    },
+    "greater-statue-leg": {
+      "type": "Statue Leg",
+      "statIds": [
+        "explicit.stat_4212255859",
+        "implicit.stat_4212255859"
+      ],
+      "min": null
+    },
+    "lesser-voidbearers-leg": {
+      "type": "Voidbearer's Leg",
+      "statIds": [
+        "implicit.stat_59612558"
+      ],
+      "min": 8
+    },
+    "voidbearers-leg": {
+      "type": "Voidbearer's Leg",
+      "statIds": [
+        "implicit.stat_59612558"
+      ],
+      "min": 12
+    },
+    "greater-voidbearers-leg": {
+      "type": "Voidbearer's Leg",
+      "statIds": [
+        "explicit.stat_3098087057",
+        "implicit.stat_3098087057"
+      ],
+      "min": 40
+    },
+    "lesser-voltaic-apparatus": {
+      "type": "Voltaic Apparatus",
+      "statIds": [
+        "explicit.stat_2483795307",
+        "implicit.stat_2483795307"
+      ],
+      "min": 8
+    },
+    "voltaic-apparatus": {
+      "type": "Voltaic Apparatus",
+      "statIds": [
+        "explicit.stat_2483795307",
+        "implicit.stat_2483795307"
+      ],
+      "min": 15
+    },
+    "greater-voltaic-apparatus": {
+      "type": "Voltaic Apparatus",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-generals-head": {
+      "type": "General's Head",
+      "statIds": [
+        "explicit.stat_2482852589",
+        "implicit.stat_2482852589"
+      ],
+      "min": 8
+    },
+    "generals-head": {
+      "type": "General's Head",
+      "statIds": [
+        "explicit.stat_2482852589",
+        "implicit.stat_2482852589"
+      ],
+      "min": 15
+    },
+    "greater-generals-head": {
+      "type": "General's Head",
+      "statIds": [
+        "explicit.stat_67280387",
+        "implicit.stat_67280387"
+      ],
+      "min": 4
+    },
+    "lesser-brutes-arm": {
+      "type": "Brute's Arm",
+      "statIds": [
+        "explicit.stat_4080418644",
+        "implicit.stat_4080418644"
+      ],
+      "min": 10
+    },
+    "brutes-arm": {
+      "type": "Brute's Arm",
+      "statIds": [
+        "explicit.stat_4080418644",
+        "implicit.stat_4080418644"
+      ],
+      "min": 20
+    },
+    "greater-brutes-arm": {
+      "type": "Brute's Arm",
+      "statIds": [
+        "explicit.stat_734614379",
+        "implicit.stat_734614379"
+      ],
+      "min": 4
+    },
+    "lesser-thaumaturges-head": {
+      "type": "Thaumaturge's Head",
+      "statIds": [
+        "explicit.stat_3753703249",
+        "implicit.stat_3753703249"
+      ],
+      "min": 4
+    },
+    "thaumaturges-head": {
+      "type": "Thaumaturge's Head",
+      "statIds": [
+        "explicit.stat_3753703249",
+        "implicit.stat_3753703249"
+      ],
+      "min": 8
+    },
+    "greater-thaumaturges-head": {
+      "type": "Thaumaturge's Head",
+      "statIds": [
+        "explicit.stat_979246511",
+        "implicit.stat_979246511"
+      ],
+      "min": 4
+    },
+    "lesser-spiked-carapace": {
+      "type": "Spiked Carapace",
+      "statIds": [
+        "explicit.stat_4235886357",
+        "implicit.stat_4235886357"
+      ],
+      "min": 200
+    },
+    "spiked-carapace": {
+      "type": "Spiked Carapace",
+      "statIds": [
+        "explicit.stat_4235886357",
+        "implicit.stat_4235886357"
+      ],
+      "min": 400
+    },
+    "greater-spiked-carapace": {
+      "type": "Spiked Carapace",
+      "statIds": [
+        "implicit.stat_2761237769"
+      ],
+      "min": 300
+    },
+    "lesser-skeletal-beast-leg": {
+      "type": "Skeletal Beast Leg",
+      "statIds": [
+        "explicit.stat_1618589784",
+        "implicit.stat_1618589784"
+      ],
+      "min": 18
+    },
+    "skeletal-beast-leg": {
+      "type": "Skeletal Beast Leg",
+      "statIds": [
+        "explicit.stat_1618589784",
+        "implicit.stat_1618589784"
+      ],
+      "min": 30
+    },
+    "greater-skeletal-beast-leg": {
+      "type": "Skeletal Beast Leg",
+      "statIds": [
+        "explicit.stat_935326447",
+        "implicit.stat_935326447"
+      ],
+      "min": null
+    },
+    "lesser-scholars-arm": {
+      "type": "Scholar's Arm",
+      "statIds": [
+        "explicit.stat_328541901",
+        "implicit.stat_328541901"
+      ],
+      "min": 10
+    },
+    "scholars-arm": {
+      "type": "Scholar's Arm",
+      "statIds": [
+        "explicit.stat_328541901",
+        "implicit.stat_328541901"
+      ],
+      "min": 20
+    },
+    "greater-scholars-arm": {
+      "type": "Scholar's Arm",
+      "statIds": [
+        "explicit.stat_656461285",
+        "implicit.stat_656461285"
+      ],
+      "min": 4
+    },
+    "lesser-aristocrats-torso": {
+      "type": "Aristocrat's Torso",
+      "statIds": [
+        "explicit.stat_44972811",
+        "implicit.stat_44972811"
+      ],
+      "min": 8
+    },
+    "aristocrats-torso": {
+      "type": "Aristocrat's Torso",
+      "statIds": [
+        "explicit.stat_44972811",
+        "implicit.stat_44972811"
+      ],
+      "min": 15
+    },
+    "greater-aristocrats-torso": {
+      "type": "Aristocrat's Torso",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-despots-fist": {
+      "type": "Despot's Fist",
+      "statIds": [
+        "explicit.stat_3835522656",
+        "implicit.stat_3835522656"
+      ],
+      "min": 20.5
+    },
+    "despots-fist": {
+      "type": "Despot's Fist",
+      "statIds": [
+        "explicit.stat_3835522656",
+        "implicit.stat_3835522656"
+      ],
+      "min": 40.5
+    },
+    "greater-despots-fist": {
+      "type": "Despot's Fist",
+      "statIds": [
+        "explicit.stat_2216127021",
+        "implicit.stat_2216127021"
+      ],
+      "min": 20
+    },
+    "lesser-vultures-gut": {
+      "type": "Vulture's Gut",
+      "statIds": [
+        "implicit.stat_1218107074"
+      ],
+      "min": 40
+    },
+    "vultures-gut": {
+      "type": "Vulture's Gut",
+      "statIds": [
+        "implicit.stat_1218107074"
+      ],
+      "min": 80
+    },
+    "greater-vultures-gut": {
+      "type": "Vulture's Gut",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-templar-banner": {
+      "type": "Templar Banner",
+      "statIds": [
+        "explicit.stat_827329571",
+        "implicit.stat_827329571"
+      ],
+      "min": 3
+    },
+    "templar-banner": {
+      "type": "Templar Banner",
+      "statIds": [
+        "explicit.stat_827329571",
+        "implicit.stat_827329571"
+      ],
+      "min": 4
+    },
+    "greater-templar-banner": {
+      "type": "Templar Banner",
+      "statIds": [
+        "explicit.stat_3115319277",
+        "implicit.stat_3115319277"
+      ],
+      "min": 1
+    },
+    "lesser-pocked-leg": {
+      "type": "Pocked Leg",
+      "statIds": [
+        "implicit.stat_791154540"
+      ],
+      "min": 20
+    },
+    "pocked-leg": {
+      "type": "Pocked Leg",
+      "statIds": [
+        "implicit.stat_791154540"
+      ],
+      "min": 35
+    },
+    "greater-pocked-leg": {
+      "type": "Pocked Leg",
+      "statIds": [
+        "implicit.stat_3209419976"
+      ],
+      "min": 35
+    },
+    "lesser-pocked-arm": {
+      "type": "Pocked Arm",
+      "statIds": [
+        "implicit.stat_623823763"
+      ],
+      "min": 20
+    },
+    "pocked-arm": {
+      "type": "Pocked Arm",
+      "statIds": [
+        "implicit.stat_623823763"
+      ],
+      "min": 35
+    },
+    "greater-pocked-arm": {
+      "type": "Pocked Arm",
+      "statIds": [
+        "implicit.stat_3482421817"
+      ],
+      "min": 35
+    },
+    "lesser-flesh-fused-lantern": {
+      "type": "Flesh-fused Lantern",
+      "statIds": [
+        "explicit.stat_3382807662",
+        "implicit.stat_3382807662"
+      ],
+      "min": 6
+    },
+    "flesh-fused-lantern": {
+      "type": "Flesh-fused Lantern",
+      "statIds": [
+        "explicit.stat_3382807662",
+        "implicit.stat_3382807662"
+      ],
+      "min": 10
+    },
+    "greater-flesh-fused-lantern": {
+      "type": "Flesh-fused Lantern",
+      "statIds": [
+        "implicit.stat_420435377"
+      ],
+      "min": 20
+    },
+    "lesser-carved-haunches": {
+      "type": "Carved Haunches",
+      "statIds": [
+        "explicit.stat_3374165039",
+        "implicit.stat_3374165039"
+      ],
+      "min": 10
+    },
+    "carved-haunches": {
+      "type": "Carved Haunches",
+      "statIds": [
+        "explicit.stat_3374165039",
+        "implicit.stat_3374165039"
+      ],
+      "min": 20
+    },
+    "greater-carved-haunches": {
+      "type": "Carved Haunches",
+      "statIds": [
+        "explicit.stat_1870732546",
+        "implicit.stat_1870732546"
+      ],
+      "min": 16
+    },
+    "lesser-blazing-skull": {
+      "type": "Blazing Skull",
+      "statIds": [
+        "explicit.stat_2137878565",
+        "implicit.stat_2137878565"
+      ],
+      "min": 20
+    },
+    "blazing-skull": {
+      "type": "Blazing Skull",
+      "statIds": [
+        "explicit.stat_2137878565",
+        "implicit.stat_2137878565"
+      ],
+      "min": 35
+    },
+    "greater-blazing-skull": {
+      "type": "Blazing Skull",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-gladiators-heart": {
+      "type": "Gladiator's Heart",
+      "statIds": [
+        "explicit.stat_2709367754",
+        "implicit.stat_2709367754"
+      ],
+      "min": 1
+    },
+    "gladiators-heart": {
+      "type": "Gladiator's Heart",
+      "statIds": [
+        "explicit.stat_2709367754",
+        "implicit.stat_2709367754"
+      ],
+      "min": 2
+    },
+    "greater-gladiators-heart": {
+      "type": "Gladiator's Heart",
+      "statIds": [
+        "explicit.stat_1181501418",
+        "implicit.stat_1181501418"
+      ],
+      "min": 5
+    },
+    "lesser-swordmasters-blade": {
+      "type": "Swordmaster's Blade",
+      "statIds": [
+        "explicit.stat_3293699237",
+        "implicit.stat_3293699237"
+      ],
+      "min": 4
+    },
+    "swordmasters-blade": {
+      "type": "Swordmaster's Blade",
+      "statIds": [
+        "explicit.stat_3293699237",
+        "implicit.stat_3293699237"
+      ],
+      "min": 8
+    },
+    "greater-swordmasters-blade": {
+      "type": "Swordmaster's Blade",
+      "statIds": [
+        "implicit.stat_2846448337"
+      ],
+      "min": 100
+    },
+    "lesser-chitinous-leg": {
+      "type": "Chitinous Leg",
+      "statIds": [
+        "explicit.stat_586568910",
+        "implicit.stat_586568910"
+      ],
+      "min": 4
+    },
+    "chitinous-leg": {
+      "type": "Chitinous Leg",
+      "statIds": [
+        "explicit.stat_586568910",
+        "implicit.stat_586568910"
+      ],
+      "min": 8
+    },
+    "greater-chitinous-leg": {
+      "type": "Chitinous Leg",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-engorged-eye": {
+      "type": "Engorged Eye",
+      "statIds": [
+        "implicit.stat_434725481"
+      ],
+      "min": 30
+    },
+    "engorged-eye": {
+      "type": "Engorged Eye",
+      "statIds": [
+        "implicit.stat_434725481"
+      ],
+      "min": 60
+    },
+    "greater-engorged-eye": {
+      "type": "Engorged Eye",
+      "statIds": [
+        "explicit.stat_1658498488",
+        "implicit.stat_1658498488"
+      ],
+      "min": null
+    },
+    "lesser-corrupted-carapace": {
+      "type": "Corrupted Carapace",
+      "statIds": [
+        "implicit.stat_367782342"
+      ],
+      "min": 18
+    },
+    "corrupted-carapace": {
+      "type": "Corrupted Carapace",
+      "statIds": [
+        "implicit.stat_367782342"
+      ],
+      "min": 30
+    },
+    "greater-corrupted-carapace": {
+      "type": "Corrupted Carapace",
+      "statIds": [
+        "implicit.stat_1183036145"
+      ],
+      "min": 6
+    },
+    "lesser-vendigo-claws": {
+      "type": "Vendigo Claws",
+      "statIds": [
+        "implicit.stat_1247498990"
+      ],
+      "min": 17.5
+    },
+    "vendigo-claws": {
+      "type": "Vendigo Claws",
+      "statIds": [
+        "implicit.stat_1247498990"
+      ],
+      "min": 37.5
+    },
+    "greater-vendigo-claws": {
+      "type": "Vendigo Claws",
+      "statIds": [
+        "explicit.stat_2805714016",
+        "implicit.stat_2805714016"
+      ],
+      "min": 25
+    },
+    "lesser-overseers-whip": {
+      "type": "Overseer's Whip",
+      "statIds": [
+        "implicit.stat_1371407912"
+      ],
+      "min": 18
+    },
+    "overseers-whip": {
+      "type": "Overseer's Whip",
+      "statIds": [
+        "implicit.stat_1371407912"
+      ],
+      "min": 30
+    },
+    "greater-overseers-whip": {
+      "type": "Overseer's Whip",
+      "statIds": [
+        "implicit.stat_3262016885"
+      ],
+      "min": null
+    },
+    "lesser-justicars-helm": {
+      "type": "Justicar's Helm",
+      "statIds": [
+        "explicit.stat_680068163",
+        "implicit.stat_680068163"
+      ],
+      "min": 18
+    },
+    "justicars-helm": {
+      "type": "Justicar's Helm",
+      "statIds": [
+        "explicit.stat_680068163",
+        "implicit.stat_680068163"
+      ],
+      "min": 30
+    },
+    "greater-justicars-helm": {
+      "type": "Justicar's Helm",
+      "statIds": [
+        "explicit.stat_3913936991",
+        "implicit.stat_3913936991"
+      ],
+      "min": 10
+    },
+    "lesser-flaming-furnace": {
+      "type": "Flaming Furnace",
+      "statIds": [
+        "explicit.stat_3602667353",
+        "implicit.stat_3602667353"
+      ],
+      "min": 8
+    },
+    "flaming-furnace": {
+      "type": "Flaming Furnace",
+      "statIds": [
+        "explicit.stat_3602667353",
+        "implicit.stat_3602667353"
+      ],
+      "min": 15
+    },
+    "greater-flaming-furnace": {
+      "type": "Flaming Furnace",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-adherents-crown": {
+      "type": "Adherent's Crown",
+      "statIds": [
+        "explicit.stat_1533563525",
+        "implicit.stat_1533563525"
+      ],
+      "min": 10
+    },
+    "adherents-crown": {
+      "type": "Adherent's Crown",
+      "statIds": [
+        "explicit.stat_1533563525",
+        "implicit.stat_1533563525"
+      ],
+      "min": 20
+    },
+    "greater-adherents-crown": {
+      "type": "Adherent's Crown",
+      "statIds": [
+        "explicit.stat_369494213",
+        "implicit.stat_369494213"
+      ],
+      "min": 10
+    },
+    "lesser-hallowed-descry": {
+      "type": "Hallowed Descry",
+      "statIds": [
+        "explicit.stat_4058190193",
+        "implicit.stat_4058190193"
+      ],
+      "min": 10
+    },
+    "hallowed-descry": {
+      "type": "Hallowed Descry",
+      "statIds": [
+        "explicit.stat_4058190193",
+        "implicit.stat_4058190193"
+      ],
+      "min": 20
+    },
+    "greater-hallowed-descry": {
+      "type": "Hallowed Descry",
+      "statIds": [
+        "implicit.stat_3660255193"
+      ],
+      "min": 4
+    },
+    "lesser-heretical-tome": {
+      "type": "Heretical Tome",
+      "statIds": [
+        "explicit.stat_1314617696",
+        "implicit.stat_1314617696"
+      ],
+      "min": 6
+    },
+    "heretical-tome": {
+      "type": "Heretical Tome",
+      "statIds": [
+        "explicit.stat_1314617696",
+        "implicit.stat_1314617696"
+      ],
+      "min": 10
+    },
+    "greater-heretical-tome": {
+      "type": "Heretical Tome",
+      "statIds": [
+        "implicit.stat_2390518055"
+      ],
+      "min": 20
+    },
+    "lesser-skeletal-tail": {
+      "type": "Skeletal Tail",
+      "statIds": [
+        "explicit.stat_1839076647",
+        "implicit.stat_1839076647"
+      ],
+      "min": 10
+    },
+    "skeletal-tail": {
+      "type": "Skeletal Tail",
+      "statIds": [
+        "explicit.stat_1839076647",
+        "implicit.stat_1839076647"
+      ],
+      "min": 20
+    },
+    "greater-skeletal-tail": {
+      "type": "Skeletal Tail",
+      "statIds": [
+        "implicit.stat_3019598671"
+      ],
+      "min": null
+    },
+    "lesser-scholars-leg": {
+      "type": "Scholar's Leg",
+      "statIds": [
+        "implicit.stat_3971521684"
+      ],
+      "min": 5
+    },
+    "scholars-leg": {
+      "type": "Scholar's Leg",
+      "statIds": [
+        "implicit.stat_3971521684"
+      ],
+      "min": 8
+    },
+    "lesser-ravenous-skull": {
+      "type": "Ravenous Skull",
+      "statIds": [],
+      "min": null
+    },
+    "ravenous-skull": {
+      "type": "Ravenous Skull",
+      "statIds": [],
+      "min": null
+    },
+    "greater-ravenous-skull": {
+      "type": "Ravenous Skull",
+      "statIds": [
+        "explicit.stat_2118708619",
+        "implicit.stat_2118708619"
+      ],
+      "min": 16
+    },
+    "lesser-nobles-head": {
+      "type": "Noble's Head",
+      "statIds": [
+        "implicit.stat_1450081919",
+        "implicit.stat_2844915624"
+      ],
+      "min": 6
+    },
+    "nobles-head": {
+      "type": "Noble's Head",
+      "statIds": [
+        "implicit.stat_1450081919",
+        "implicit.stat_2844915624"
+      ],
+      "min": 12
+    },
+    "greater-nobles-head": {
+      "type": "Noble's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-conjoined-hound-head": {
+      "type": "Conjoined Hound Head",
+      "statIds": [
+        "explicit.stat_1504513372",
+        "implicit.stat_1504513372"
+      ],
+      "min": 8
+    },
+    "conjoined-hound-head": {
+      "type": "Conjoined Hound Head",
+      "statIds": [
+        "explicit.stat_1504513372",
+        "implicit.stat_1504513372"
+      ],
+      "min": 15
+    },
+    "greater-conjoined-hound-head": {
+      "type": "Conjoined Hound Head",
+      "statIds": [
+        "explicit.stat_1264919148",
+        "implicit.stat_1264919148"
+      ],
+      "min": 1
+    },
+    "lesser-scouts-bow": {
+      "type": "Scout's Bow",
+      "statIds": [
+        "explicit.stat_2653955271",
+        "implicit.stat_2653955271"
+      ],
+      "min": 3
+    },
+    "scouts-bow": {
+      "type": "Scout's Bow",
+      "statIds": [
+        "explicit.stat_2653955271",
+        "implicit.stat_2653955271"
+      ],
+      "min": 6
+    },
+    "greater-scouts-bow": {
+      "type": "Scout's Bow",
+      "statIds": [
+        "implicit.stat_560643297"
+      ],
+      "min": 10
+    },
+    "lesser-ancestors-club": {
+      "type": "Ancestor's Club",
+      "statIds": [
+        "implicit.stat_2783093471"
+      ],
+      "min": 10
+    },
+    "ancestors-club": {
+      "type": "Ancestor's Club",
+      "statIds": [
+        "implicit.stat_2783093471"
+      ],
+      "min": 20
+    },
+    "greater-ancestors-club": {
+      "type": "Ancestor's Club",
+      "statIds": [
+        "explicit.stat_1661253443",
+        "implicit.stat_1661253443"
+      ],
+      "min": 1
+    },
+    "lesser-skeleton-wheel": {
+      "type": "Skeleton Wheel",
+      "statIds": [
+        "explicit.stat_2831922878",
+        "implicit.stat_2831922878"
+      ],
+      "min": 5
+    },
+    "skeleton-wheel": {
+      "type": "Skeleton Wheel",
+      "statIds": [
+        "explicit.stat_2831922878",
+        "implicit.stat_2831922878"
+      ],
+      "min": 10
+    },
+    "greater-skeleton-wheel": {
+      "type": "Skeleton Wheel",
+      "statIds": [
+        "explicit.stat_2378187488",
+        "implicit.stat_2378187488"
+      ],
+      "min": 1
+    },
+    "lesser-osseous-talon": {
+      "type": "Osseous Talon",
+      "statIds": [
+        "explicit.stat_3261801346",
+        "implicit.stat_3261801346"
+      ],
+      "min": 10
+    },
+    "osseous-talon": {
+      "type": "Osseous Talon",
+      "statIds": [
+        "explicit.stat_3261801346",
+        "implicit.stat_3261801346"
+      ],
+      "min": 20
+    },
+    "greater-osseous-talon": {
+      "type": "Osseous Talon",
+      "statIds": [
+        "explicit.stat_4139681126",
+        "implicit.stat_4139681126"
+      ],
+      "min": 4
+    },
+    "lesser-flayed-visage": {
+      "type": "Flayed Visage",
+      "statIds": [],
+      "min": null
+    },
+    "flayed-visage": {
+      "type": "Flayed Visage",
+      "statIds": [],
+      "min": null
+    },
+    "greater-flayed-visage": {
+      "type": "Flayed Visage",
+      "statIds": [
+        "explicit.stat_822568652",
+        "implicit.stat_822568652"
+      ],
+      "min": 10
+    },
+    "lesser-flaming-goat-hoof": {
+      "type": "Flaming Goat Hoof",
+      "statIds": [
+        "explicit.stat_3962278098",
+        "implicit.stat_3962278098"
+      ],
+      "min": 10
+    },
+    "flaming-goat-hoof": {
+      "type": "Flaming Goat Hoof",
+      "statIds": [
+        "explicit.stat_3962278098",
+        "implicit.stat_3962278098"
+      ],
+      "min": 20
+    },
+    "greater-flaming-goat-hoof": {
+      "type": "Flaming Goat Hoof",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-bear-head": {
+      "type": "Bear Head",
+      "statIds": [
+        "implicit.stat_2428638878"
+      ],
+      "min": 4
+    },
+    "lesser-boar-head": {
+      "type": "Boar Head",
+      "statIds": [
+        "explicit.stat_4224978303",
+        "implicit.stat_4224978303"
+      ],
+      "min": 8
+    },
+    "lesser-stag-head": {
+      "type": "Stag Head",
+      "statIds": [
+        "explicit.stat_3680664274",
+        "explicit.stat_492027537",
+        "implicit.stat_3680664274",
+        "implicit.stat_492027537"
+      ],
+      "min": 8
+    },
+    "lesser-arachnid-egg-sac": {
+      "type": "Arachnid Egg Sac",
+      "statIds": [
+        "implicit.stat_2510300854"
+      ],
+      "min": 5
+    },
+    "arachnid-egg-sac": {
+      "type": "Arachnid Egg Sac",
+      "statIds": [
+        "implicit.stat_2510300854"
+      ],
+      "min": 8
+    },
+    "greater-arachnid-egg-sac": {
+      "type": "Arachnid Egg Sac",
+      "statIds": [
+        "implicit.stat_2414462207"
+      ],
+      "min": null
+    },
+    "lesser-infested-torso": {
+      "type": "Infested Torso",
+      "statIds": [
+        "explicit.stat_2479683456",
+        "implicit.stat_2479683456"
+      ],
+      "min": 0.8
+    },
+    "infested-torso": {
+      "type": "Infested Torso",
+      "statIds": [
+        "explicit.stat_2479683456",
+        "implicit.stat_2479683456"
+      ],
+      "min": 1.6
+    },
+    "greater-infested-torso": {
+      "type": "Infested Torso",
+      "statIds": [
+        "explicit.stat_2602664175",
+        "implicit.stat_2602664175"
+      ],
+      "min": 3
+    },
+    "lesser-king-crabs-claw": {
+      "type": "King Crab's Claw",
+      "statIds": [
+        "explicit.stat_979246511",
+        "implicit.stat_979246511"
+      ],
+      "min": 3
+    },
+    "king-crabs-claw": {
+      "type": "King Crab's Claw",
+      "statIds": [
+        "explicit.stat_979246511",
+        "implicit.stat_979246511"
+      ],
+      "min": 4
+    },
+    "greater-king-crabs-claw": {
+      "type": "King Crab's Claw",
+      "statIds": [
+        "explicit.stat_3682839745",
+        "implicit.stat_3682839745"
+      ],
+      "min": 10
+    },
+    "lesser-calcified-leg": {
+      "type": "Calcified Leg",
+      "statIds": [
+        "implicit.stat_3059357595"
+      ],
+      "min": 20
+    },
+    "calcified-leg": {
+      "type": "Calcified Leg",
+      "statIds": [
+        "implicit.stat_3059357595"
+      ],
+      "min": 35
+    },
+    "greater-calcified-leg": {
+      "type": "Calcified Leg",
+      "statIds": [
+        "explicit.stat_1225383362",
+        "implicit.stat_1225383362"
+      ],
+      "min": 1
+    },
+    "lesser-wraith-claws": {
+      "type": "Wraith Claws",
+      "statIds": [
+        "explicit.stat_3094222195",
+        "implicit.stat_3094222195"
+      ],
+      "min": 5
+    },
+    "wraith-claws": {
+      "type": "Wraith Claws",
+      "statIds": [
+        "explicit.stat_3094222195",
+        "implicit.stat_3094222195"
+      ],
+      "min": 8
+    },
+    "greater-wraith-claws": {
+      "type": "Wraith Claws",
+      "statIds": [
+        "explicit.stat_1480595847",
+        "implicit.stat_1480595847"
+      ],
+      "min": 20
+    },
+    "lesser-inquisitors-claw": {
+      "type": "Inquisitor's Claw",
+      "statIds": [],
+      "min": null
+    },
+    "inquisitors-claw": {
+      "type": "Inquisitor's Claw",
+      "statIds": [],
+      "min": null
+    },
+    "greater-inquisitors-claw": {
+      "type": "Inquisitor's Claw",
+      "statIds": [
+        "explicit.stat_2545584555",
+        "implicit.stat_2545584555"
+      ],
+      "min": 15
+    },
+    "lesser-infected-leg": {
+      "type": "Infected Leg",
+      "statIds": [
+        "implicit.stat_2759003954"
+      ],
+      "min": 6
+    },
+    "infected-leg": {
+      "type": "Infected Leg",
+      "statIds": [
+        "implicit.stat_2759003954"
+      ],
+      "min": 10
+    },
+    "greater-infected-leg": {
+      "type": "Infected Leg",
+      "statIds": [
+        "implicit.stat_3188898882"
+      ],
+      "min": 15
+    },
+    "lesser-necromancers-mask": {
+      "type": "Necromancer's Mask",
+      "statIds": [
+        "explicit.stat_2957407601",
+        "implicit.stat_2957407601"
+      ],
+      "min": 10
+    },
+    "necromancers-mask": {
+      "type": "Necromancer's Mask",
+      "statIds": [
+        "explicit.stat_2957407601",
+        "implicit.stat_2957407601"
+      ],
+      "min": 20
+    },
+    "greater-necromancers-mask": {
+      "type": "Necromancer's Mask",
+      "statIds": [
+        "implicit.stat_4246915004"
+      ],
+      "min": 15
+    },
+    "lesser-ornate-torso": {
+      "type": "Ornate Torso",
+      "statIds": [
+        "explicit.stat_770672621",
+        "implicit.stat_770672621"
+      ],
+      "min": 10
+    },
+    "ornate-torso": {
+      "type": "Ornate Torso",
+      "statIds": [
+        "explicit.stat_770672621",
+        "implicit.stat_770672621"
+      ],
+      "min": 20
+    },
+    "greater-ornate-torso": {
+      "type": "Ornate Torso",
+      "statIds": [
+        "implicit.stat_474853513"
+      ],
+      "min": 3
+    },
+    "lesser-devourers-antenna": {
+      "type": "Devourer's Antenna",
+      "statIds": [
+        "implicit.stat_3537775677"
+      ],
+      "min": 40
+    },
+    "devourers-antenna": {
+      "type": "Devourer's Antenna",
+      "statIds": [
+        "implicit.stat_3537775677"
+      ],
+      "min": 75
+    },
+    "greater-devourers-antenna": {
+      "type": "Devourer's Antenna",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-blackened-lungs": {
+      "type": "Blackened Lungs",
+      "statIds": [
+        "explicit.stat_1316278494",
+        "implicit.stat_1316278494"
+      ],
+      "min": 10
+    },
+    "blackened-lungs": {
+      "type": "Blackened Lungs",
+      "statIds": [
+        "explicit.stat_1316278494",
+        "implicit.stat_1316278494"
+      ],
+      "min": 20
+    },
+    "greater-blackened-lungs": {
+      "type": "Blackened Lungs",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-constructs-head": {
+      "type": "Construct's Head",
+      "statIds": [
+        "explicit.stat_3759663284",
+        "implicit.stat_3759663284"
+      ],
+      "min": 8
+    },
+    "constructs-head": {
+      "type": "Construct's Head",
+      "statIds": [
+        "explicit.stat_3759663284",
+        "implicit.stat_3759663284"
+      ],
+      "min": 15
+    },
+    "greater-constructs-head": {
+      "type": "Construct's Head",
+      "statIds": [
+        "implicit.stat_2101631651"
+      ],
+      "min": 4
+    },
+    "lesser-spider-queens-head": {
+      "type": "Spider Queen's Head",
+      "statIds": [],
+      "min": null
+    },
+    "spider-queens-head": {
+      "type": "Spider Queen's Head",
+      "statIds": [],
+      "min": null
+    },
+    "greater-spider-queens-head": {
+      "type": "Spider Queen's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-dessicated-head": {
+      "type": "Dessicated Head",
+      "statIds": [
+        "implicit.stat_2228518621"
+      ],
+      "min": 20
+    },
+    "dessicated-head": {
+      "type": "Dessicated Head",
+      "statIds": [
+        "implicit.stat_2228518621"
+      ],
+      "min": 35
+    },
+    "greater-dessicated-head": {
+      "type": "Dessicated Head",
+      "statIds": [
+        "explicit.stat_966747987",
+        "implicit.stat_966747987"
+      ],
+      "min": 1
+    },
+    "lesser-hags-stomach": {
+      "type": "Hag's Stomach",
+      "statIds": [
+        "explicit.stat_2353576063",
+        "implicit.stat_2353576063"
+      ],
+      "min": 5
+    },
+    "hags-stomach": {
+      "type": "Hag's Stomach",
+      "statIds": [
+        "explicit.stat_2353576063",
+        "implicit.stat_2353576063"
+      ],
+      "min": 8
+    },
+    "greater-hags-stomach": {
+      "type": "Hag's Stomach",
+      "statIds": [
+        "explicit.stat_1818773442",
+        "implicit.stat_1818773442"
+      ],
+      "min": 8
+    },
+    "lesser-ghostly-claw": {
+      "type": "Ghostly Claw",
+      "statIds": [
+        "implicit.stat_922882178"
+      ],
+      "min": 5
+    },
+    "ghostly-claw": {
+      "type": "Ghostly Claw",
+      "statIds": [
+        "implicit.stat_922882178"
+      ],
+      "min": 8
+    },
+    "greater-ghostly-claw": {
+      "type": "Ghostly Claw",
+      "statIds": [
+        "explicit.stat_240857668",
+        "implicit.stat_240857668"
+      ],
+      "min": 20
+    },
+    "lesser-terrifying-maw": {
+      "type": "Terrifying Maw",
+      "statIds": [
+        "explicit.stat_3407849389",
+        "implicit.stat_3407849389"
+      ],
+      "min": 30
+    },
+    "terrifying-maw": {
+      "type": "Terrifying Maw",
+      "statIds": [
+        "explicit.stat_3407849389",
+        "implicit.stat_3407849389"
+      ],
+      "min": 50
+    },
+    "greater-terrifying-maw": {
+      "type": "Terrifying Maw",
+      "statIds": [
+        "explicit.stat_1019020209",
+        "implicit.stat_1019020209"
+      ],
+      "min": 8
+    },
+    "lesser-armoured-leg": {
+      "type": "Armoured Leg",
+      "statIds": [
+        "explicit.stat_3416410609",
+        "implicit.stat_3416410609"
+      ],
+      "min": 8
+    },
+    "armoured-leg": {
+      "type": "Armoured Leg",
+      "statIds": [
+        "explicit.stat_3416410609",
+        "implicit.stat_3416410609"
+      ],
+      "min": 15
+    },
+    "greater-armoured-leg": {
+      "type": "Armoured Leg",
+      "statIds": [
+        "implicit.stat_3307066983"
+      ],
+      "min": null
+    },
+    "lesser-blackguards-leg": {
+      "type": "Blackguard's Leg",
+      "statIds": [
+        "explicit.stat_1478653032",
+        "implicit.stat_1478653032"
+      ],
+      "min": 30
+    },
+    "blackguards-leg": {
+      "type": "Blackguard's Leg",
+      "statIds": [
+        "explicit.stat_1478653032",
+        "implicit.stat_1478653032"
+      ],
+      "min": 50
+    },
+    "greater-blackguards-leg": {
+      "type": "Blackguard's Leg",
+      "statIds": [
+        "explicit.stat_3653191834",
+        "implicit.stat_3653191834"
+      ],
+      "min": null
+    },
+    "lesser-champions-banner": {
+      "type": "Champion's Banner",
+      "statIds": [
+        "implicit.stat_947144250"
+      ],
+      "min": 4
+    },
+    "champions-banner": {
+      "type": "Champion's Banner",
+      "statIds": [
+        "implicit.stat_947144250"
+      ],
+      "min": 6
+    },
+    "greater-champions-banner": {
+      "type": "Champion's Banner",
+      "statIds": [
+        "implicit.stat_4268284087"
+      ],
+      "min": 1
+    },
+    "lesser-lunar-bow": {
+      "type": "Lunar Bow",
+      "statIds": [
+        "explicit.stat_2133341901",
+        "implicit.stat_2133341901"
+      ],
+      "min": 10
+    },
+    "lunar-bow": {
+      "type": "Lunar Bow",
+      "statIds": [
+        "explicit.stat_2133341901",
+        "implicit.stat_2133341901"
+      ],
+      "min": 20
+    },
+    "greater-lunar-bow": {
+      "type": "Lunar Bow",
+      "statIds": [
+        "explicit.stat_979246511",
+        "implicit.stat_979246511"
+      ],
+      "min": 10
+    },
+    "lesser-golden-ankh": {
+      "type": "Golden Ankh",
+      "statIds": [
+        "explicit.stat_927817294",
+        "implicit.stat_927817294"
+      ],
+      "min": 18
+    },
+    "golden-ankh": {
+      "type": "Golden Ankh",
+      "statIds": [
+        "explicit.stat_927817294",
+        "implicit.stat_927817294"
+      ],
+      "min": 30
+    },
+    "greater-golden-ankh": {
+      "type": "Golden Ankh",
+      "statIds": [
+        "explicit.stat_2841618445",
+        "implicit.stat_2841618445"
+      ],
+      "min": 0.5
+    },
+    "lesser-gemling-torso": {
+      "type": "Gemling Torso",
+      "statIds": [],
+      "min": null
+    },
+    "gemling-torso": {
+      "type": "Gemling Torso",
+      "statIds": [],
+      "min": null
+    },
+    "greater-gemling-torso-armour": {
+      "type": "Gemling Torso",
+      "statIds": [
+        "implicit.stat_2840285057"
+      ],
+      "min": 60
+    },
+    "greater-gemling-torso-evasion": {
+      "type": "Gemling Torso",
+      "statIds": [
+        "explicit.stat_3509362078",
+        "implicit.stat_3509362078"
+      ],
+      "min": 60
+    },
+    "greater-gemling-torso-energy-shield": {
+      "type": "Gemling Torso",
+      "statIds": [
+        "explicit.stat_1195319608",
+        "implicit.stat_1195319608"
+      ],
+      "min": 30
+    },
+    "lesser-scarecrows-pitchfork": {
+      "type": "Scarecrow's Pitchfork",
+      "statIds": [
+        "explicit.stat_3181974858",
+        "implicit.stat_3181974858"
+      ],
+      "min": 10
+    },
+    "scarecrows-pitchfork": {
+      "type": "Scarecrow's Pitchfork",
+      "statIds": [
+        "explicit.stat_3181974858",
+        "implicit.stat_3181974858"
+      ],
+      "min": 20
+    },
+    "greater-scarecrows-pitchfork": {
+      "type": "Scarecrow's Pitchfork",
+      "statIds": [
+        "implicit.stat_893038512"
+      ],
+      "min": null
+    },
+    "lesser-charred-leg": {
+      "type": "Charred Leg",
+      "statIds": [
+        "explicit.stat_986397080",
+        "implicit.stat_986397080"
+      ],
+      "min": 20
+    },
+    "charred-leg": {
+      "type": "Charred Leg",
+      "statIds": [
+        "explicit.stat_986397080",
+        "implicit.stat_986397080"
+      ],
+      "min": 35
+    },
+    "greater-charred-leg": {
+      "type": "Charred Leg",
+      "statIds": [
+        "explicit.stat_1643688236",
+        "implicit.stat_1643688236"
+      ],
+      "min": null
+    },
+    "lesser-sun-bleached-breastplate": {
+      "type": "Sun-bleached Breastplate",
+      "statIds": [
+        "implicit.stat_4163360392"
+      ],
+      "min": 4
+    },
+    "sun-bleached-breastplate": {
+      "type": "Sun-bleached Breastplate",
+      "statIds": [
+        "implicit.stat_4163360392"
+      ],
+      "min": 6
+    },
+    "greater-sun-bleached-breastplate": {
+      "type": "Sun-bleached Breastplate",
+      "statIds": [
+        "implicit.stat_4088932395"
+      ],
+      "min": 1
+    },
+    "lesser-resplendent-sceptre": {
+      "type": "Resplendent Sceptre",
+      "statIds": [
+        "explicit.stat_2139660169",
+        "implicit.stat_2139660169"
+      ],
+      "min": 7
+    },
+    "resplendent-sceptre": {
+      "type": "Resplendent Sceptre",
+      "statIds": [
+        "explicit.stat_2139660169",
+        "implicit.stat_2139660169"
+      ],
+      "min": 12
+    },
+    "greater-resplendent-sceptre": {
+      "type": "Resplendent Sceptre",
+      "statIds": [
+        "implicit.stat_280530196"
+      ],
+      "min": 20
+    },
+    "lesser-solar-shield": {
+      "type": "Solar Shield",
+      "statIds": [
+        "explicit.stat_3342989455",
+        "implicit.stat_3342989455"
+      ],
+      "min": 3
+    },
+    "solar-shield": {
+      "type": "Solar Shield",
+      "statIds": [
+        "explicit.stat_3342989455",
+        "implicit.stat_3342989455"
+      ],
+      "min": 5
+    },
+    "greater-solar-shield": {
+      "type": "Solar Shield",
+      "statIds": [
+        "implicit.stat_3375859421"
+      ],
+      "min": 10
+    },
+    "lesser-crescent-blade": {
+      "type": "Crescent Blade",
+      "statIds": [
+        "explicit.stat_1871056256",
+        "implicit.stat_1871056256"
+      ],
+      "min": 3
+    },
+    "crescent-blade": {
+      "type": "Crescent Blade",
+      "statIds": [
+        "explicit.stat_1871056256",
+        "implicit.stat_1871056256"
+      ],
+      "min": 5
+    },
+    "greater-crescent-blade": {
+      "type": "Crescent Blade",
+      "statIds": [
+        "implicit.stat_1017730114"
+      ],
+      "min": 10
+    },
+    "lesser-smugglers-hand": {
+      "type": "Smuggler's Hand",
+      "statIds": [
+        "explicit.stat_253956903",
+        "explicit.stat_3664950032",
+        "implicit.stat_253956903"
+      ],
+      "min": 5
+    },
+    "smugglers-hand": {
+      "type": "Smuggler's Hand",
+      "statIds": [
+        "explicit.stat_253956903",
+        "explicit.stat_3664950032",
+        "implicit.stat_253956903"
+      ],
+      "min": 8
+    },
+    "greater-smugglers-hand": {
+      "type": "Smuggler's Hand",
+      "statIds": [
+        "implicit.stat_2450413567"
+      ],
+      "min": 2
+    },
+    "lesser-coagulated-essence": {
+      "type": "Coagulated Essence",
+      "statIds": [
+        "implicit.stat_546701346"
+      ],
+      "min": 20
+    },
+    "coagulated-essence": {
+      "type": "Coagulated Essence",
+      "statIds": [
+        "implicit.stat_546701346"
+      ],
+      "min": 35
+    },
+    "greater-coagulated-essence": {
+      "type": "Coagulated Essence",
+      "statIds": [
+        "implicit.stat_1313678015"
+      ],
+      "min": 30
+    },
+    "lesser-gelid-fangs": {
+      "type": "Gelid Fangs",
+      "statIds": [
+        "explicit.stat_3417711605",
+        "implicit.stat_3417711605"
+      ],
+      "min": 3
+    },
+    "gelid-fangs": {
+      "type": "Gelid Fangs",
+      "statIds": [
+        "explicit.stat_3417711605",
+        "implicit.stat_3417711605"
+      ],
+      "min": 6
+    },
+    "greater-gelid-fangs": {
+      "type": "Gelid Fangs",
+      "statIds": [
+        "implicit.stat_3402448478"
+      ],
+      "min": 10
+    },
+    "lesser-desert-sword": {
+      "type": "Desert Sword",
+      "statIds": [
+        "explicit.stat_2221570601",
+        "implicit.stat_2221570601"
+      ],
+      "min": 15
+    },
+    "desert-sword": {
+      "type": "Desert Sword",
+      "statIds": [
+        "explicit.stat_2221570601",
+        "implicit.stat_2221570601"
+      ],
+      "min": 30
+    },
+    "greater-desert-sword": {
+      "type": "Desert Sword",
+      "statIds": [
+        "explicit.stat_3503466234",
+        "explicit.stat_3565956680",
+        "implicit.stat_3503466234",
+        "implicit.stat_3565956680"
+      ],
+      "min": 40
+    },
+    "lesser-scorpion-stinger": {
+      "type": "Scorpion Stinger",
+      "statIds": [
+        "implicit.stat_3750544543"
+      ],
+      "min": 40
+    },
+    "scorpion-stinger": {
+      "type": "Scorpion Stinger",
+      "statIds": [
+        "implicit.stat_3750544543"
+      ],
+      "min": 75
+    },
+    "greater-scorpion-stinger": {
+      "type": "Scorpion Stinger",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-lithic-haunches": {
+      "type": "Lithic Haunches",
+      "statIds": [],
+      "min": null
+    },
+    "lithic-haunches": {
+      "type": "Lithic Haunches",
+      "statIds": [],
+      "min": null
+    },
+    "greater-lithic-haunches": {
+      "type": "Lithic Haunches",
+      "statIds": [
+        "explicit.stat_2415497478",
+        "implicit.stat_2415497478"
+      ],
+      "min": 10
+    },
+    "lesser-chimeral-eye": {
+      "type": "Chimeral Eye",
+      "statIds": [
+        "implicit.stat_2221035608"
+      ],
+      "min": 80
+    },
+    "chimeral-eye": {
+      "type": "Chimeral Eye",
+      "statIds": [
+        "implicit.stat_2221035608"
+      ],
+      "min": 150
+    },
+    "greater-chimeral-eye": {
+      "type": "Chimeral Eye",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-chaos-golems-core": {
+      "type": "Chaos Golem's Core",
+      "statIds": [
+        "explicit.stat_3762784591",
+        "implicit.stat_3762784591"
+      ],
+      "min": 5
+    },
+    "chaos-golems-core": {
+      "type": "Chaos Golem's Core",
+      "statIds": [
+        "explicit.stat_3762784591",
+        "implicit.stat_3762784591"
+      ],
+      "min": 7
+    },
+    "greater-chaos-golems-core": {
+      "type": "Chaos Golem's Core",
+      "statIds": [
+        "implicit.stat_1640937241"
+      ],
+      "min": 8
+    },
+    "lesser-desert-queens-crown": {
+      "type": "Desert Queen's Crown",
+      "statIds": [
+        "implicit.stat_396291184"
+      ],
+      "min": 20
+    },
+    "desert-queens-crown": {
+      "type": "Desert Queen's Crown",
+      "statIds": [
+        "implicit.stat_396291184"
+      ],
+      "min": 35
+    },
+    "greater-desert-queens-crown": {
+      "type": "Desert Queen's Crown",
+      "statIds": [
+        "implicit.stat_1846105968"
+      ],
+      "min": 6
+    },
+    "lesser-voltaic-skull": {
+      "type": "Voltaic Skull",
+      "statIds": [
+        "explicit.stat_3240769289",
+        "implicit.stat_3240769289"
+      ],
+      "min": 10
+    },
+    "voltaic-skull": {
+      "type": "Voltaic Skull",
+      "statIds": [
+        "explicit.stat_3240769289",
+        "implicit.stat_3240769289"
+      ],
+      "min": 20
+    },
+    "greater-voltaic-skull": {
+      "type": "Voltaic Skull",
+      "statIds": [
+        "explicit.stat_219391121",
+        "implicit.stat_219391121"
+      ],
+      "min": 10
+    },
+    "lesser-flayed-arm": {
+      "type": "Flayed Arm",
+      "statIds": [
+        "explicit.stat_1444556985",
+        "implicit.stat_1444556985"
+      ],
+      "min": 5
+    },
+    "flayed-arm": {
+      "type": "Flayed Arm",
+      "statIds": [
+        "explicit.stat_1444556985",
+        "implicit.stat_1444556985"
+      ],
+      "min": 8
+    },
+    "greater-flayed-arm": {
+      "type": "Flayed Arm",
+      "statIds": [
+        "implicit.stat_738897289"
+      ],
+      "min": 10
+    },
+    "inquisitors-head-bleeding": {
+      "type": "Inquisitor's Head",
+      "statIds": [
+        "implicit.stat_3262991862"
+      ],
+      "min": null
+    },
+    "inquisitors-head-poison": {
+      "type": "Inquisitor's Head",
+      "statIds": [],
+      "min": null
+    },
+    "witchs-head": {
+      "type": "Witch's Head",
+      "statIds": [],
+      "min": null
+    },
+    "hags-head": {
+      "type": "Hag's Head",
+      "statIds": [
+        "implicit.stat_3723063276"
+      ],
+      "min": null
+    },
+    "lesser-diseased-wing": {
+      "type": "Diseased Wing",
+      "statIds": [
+        "explicit.stat_4055307827",
+        "implicit.stat_4055307827"
+      ],
+      "min": 6
+    },
+    "diseased-wing": {
+      "type": "Diseased Wing",
+      "statIds": [
+        "explicit.stat_4055307827",
+        "implicit.stat_4055307827"
+      ],
+      "min": 10
+    },
+    "greater-diseased-wing": {
+      "type": "Diseased Wing",
+      "statIds": [
+        "implicit.stat_3313028660"
+      ],
+      "min": 20
+    },
+    "lesser-smouldering-leg": {
+      "type": "Smouldering Leg",
+      "statIds": [
+        "implicit.stat_2059097830"
+      ],
+      "min": 6
+    },
+    "smouldering-leg": {
+      "type": "Smouldering Leg",
+      "statIds": [
+        "implicit.stat_2059097830"
+      ],
+      "min": 10
+    },
+    "greater-smouldering-leg": {
+      "type": "Smouldering Leg",
+      "statIds": [
+        "implicit.stat_1590183647"
+      ],
+      "min": 8
+    },
+    "lesser-osseous-scythe": {
+      "type": "Osseous Scythe",
+      "statIds": [
+        "explicit.stat_3739863694",
+        "explicit.stat_725880290",
+        "implicit.stat_3739863694"
+      ],
+      "min": 8
+    },
+    "osseous-scythe": {
+      "type": "Osseous Scythe",
+      "statIds": [
+        "explicit.stat_3739863694",
+        "explicit.stat_725880290",
+        "implicit.stat_3739863694"
+      ],
+      "min": 15
+    },
+    "greater-osseous-scythe": {
+      "type": "Osseous Scythe",
+      "statIds": [
+        "explicit.stat_298173317",
+        "implicit.stat_298173317"
+      ],
+      "min": 15
+    },
+    "broken-bust": {
+      "type": "Broken Bust",
+      "statIds": [
+        "explicit.stat_2920230984",
+        "implicit.stat_2920230984"
+      ],
+      "min": 2
+    },
+    "lesser-bloodied-arm": {
+      "type": "Bloodied Arm",
+      "statIds": [
+        "explicit.stat_2705185939",
+        "implicit.stat_2705185939"
+      ],
+      "min": 5
+    },
+    "bloodied-arm": {
+      "type": "Bloodied Arm",
+      "statIds": [
+        "explicit.stat_2705185939",
+        "implicit.stat_2705185939"
+      ],
+      "min": 8
+    },
+    "greater-bloodied-arm": {
+      "type": "Bloodied Arm",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-prosthetic-leg": {
+      "type": "Prosthetic Leg",
+      "statIds": [
+        "explicit.stat_1086147743",
+        "implicit.stat_1086147743"
+      ],
+      "min": 8
+    },
+    "prosthetic-leg": {
+      "type": "Prosthetic Leg",
+      "statIds": [
+        "explicit.stat_1086147743",
+        "implicit.stat_1086147743"
+      ],
+      "min": 15
+    },
+    "greater-prosthetic-leg": {
+      "type": "Prosthetic Leg",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-distended-stomach": {
+      "type": "Distended Stomach",
+      "statIds": [
+        "explicit.stat_2118708619",
+        "implicit.stat_2118708619"
+      ],
+      "min": 10
+    },
+    "distended-stomach": {
+      "type": "Distended Stomach",
+      "statIds": [
+        "explicit.stat_2118708619",
+        "implicit.stat_2118708619"
+      ],
+      "min": 20
+    },
+    "greater-distended-stomach": {
+      "type": "Distended Stomach",
+      "statIds": [],
+      "min": null
+    },
+    "bats-wings": {
+      "type": "Bat's Wings",
+      "statIds": [
+        "explicit.stat_3005472710",
+        "implicit.stat_3005472710"
+      ],
+      "min": 10
+    },
+    "pit-fighters-helm-frenzy-charge": {
+      "type": "Pit Fighter's Helm",
+      "statIds": [
+        "explicit.stat_3769211656",
+        "implicit.stat_3769211656"
+      ],
+      "min": 10
+    },
+    "pit-fighters-helm-endurance-charge": {
+      "type": "Pit Fighter's Helm",
+      "statIds": [
+        "explicit.stat_417188801",
+        "implicit.stat_417188801"
+      ],
+      "min": 10
+    },
+    "lions-claws-leech": {
+      "type": "Lion's Claws",
+      "statIds": [
+        "explicit.stat_141810208",
+        "implicit.stat_141810208",
+        "implicit.stat_1828023575"
+      ],
+      "min": 1
+    },
+    "lions-claws-maximum-leech": {
+      "type": "Lion's Claws",
+      "statIds": [
+        "explicit.stat_3101897388",
+        "implicit.stat_3101897388"
+      ],
+      "min": 10
+    },
+    "minotaurs-head": {
+      "type": "Minotaur's Head",
+      "statIds": [
+        "explicit.stat_1978899297",
+        "implicit.stat_1978899297"
+      ],
+      "min": 1
+    },
+    "hydras-head": {
+      "type": "Hydra's Head",
+      "statIds": [
+        "explicit.stat_2138799639",
+        "implicit.stat_2138799639"
+      ],
+      "min": null
+    },
+    "chimeras-head": {
+      "type": "Chimera's Head",
+      "statIds": [
+        "explicit.stat_2337295272",
+        "implicit.stat_2337295272"
+      ],
+      "min": 35
+    },
+    "phoenixs-head": {
+      "type": "Phoenix's Head",
+      "statIds": [
+        "explicit.stat_3633399302",
+        "implicit.stat_3633399302"
+      ],
+      "min": 1
+    },
+    "constrictors-head-grelwood": {
+      "type": "Constrictor's Head",
+      "statIds": [
+        "explicit.stat_988207959",
+        "implicit.stat_988207959"
+      ],
+      "min": null
+    },
+    "constrictors-head-beltimber": {
+      "type": "Constrictor's Head",
+      "statIds": [
+        "explicit.stat_2809802678",
+        "implicit.stat_2809802678"
+      ],
+      "min": null
+    },
+    "lesser-purifiers-head": {
+      "type": "Purifier's Head",
+      "statIds": [
+        "explicit.stat_956038713",
+        "implicit.stat_956038713"
+      ],
+      "min": null
+    },
+    "lesser-enslavers-head": {
+      "type": "Enslaver's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-eradicators-head": {
+      "type": "Eradicator's Head",
+      "statIds": [
+        "explicit.stat_1698276268",
+        "implicit.stat_1698276268"
+      ],
+      "min": 8
+    },
+    "lesser-barans-head": {
+      "type": "Baran's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-veritanias-head": {
+      "type": "Veritania's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-droxs-head": {
+      "type": "Drox's Head",
+      "statIds": [],
+      "min": null
+    },
+    "lesser-al-hezmins-head": {
+      "type": "Al-Hezmin's Head",
+      "statIds": [],
+      "min": null
+    },
+    "nightmarish-book-of-depravity-endurance-charge": {
+      "type": "Nightmarish Book of Depravity",
+      "statIds": [
+        "implicit.stat_2087475423"
+      ],
+      "min": 2
+    },
+    "nightmarish-book-of-depravity-frenzy-charge": {
+      "type": "Nightmarish Book of Depravity",
+      "statIds": [
+        "explicit.stat_2323242761",
+        "implicit.stat_2323242761"
+      ],
+      "min": 2
+    },
+    "nightmarish-book-of-depravity-power-charge": {
+      "type": "Nightmarish Book of Depravity",
+      "statIds": [
+        "explicit.stat_1453197917",
+        "implicit.stat_1453197917"
+      ],
+      "min": 2
+    },
+    "nightmarish-head-of-uhtred": {
+      "type": "Nightmarish Head of Uhtred",
+      "statIds": [
+        "implicit.stat_2316295572"
+      ],
+      "min": 20
+    },
+    "nightmarish-core-of-the-unbreakable": {
+      "type": "Nightmarish Core of the Unbreakable",
+      "statIds": [
+        "explicit.stat_1217730254",
+        "implicit.stat_1217730254"
+      ],
+      "min": 2
+    },
+    "nightmarish-wings-of-lycia-pact-cooldown": {
+      "type": "Nightmarish Wings of Lycia",
+      "statIds": [
+        "explicit.stat_1144742318",
+        "implicit.stat_1144742318"
+      ],
+      "min": 25
+    },
+    "nightmarish-wings-of-lycia-pact-speed": {
+      "type": "Nightmarish Wings of Lycia",
+      "statIds": [
+        "explicit.stat_3120620173",
+        "implicit.stat_3120620173"
+      ],
+      "min": 30
+    },
+    "nightmarish-wings-of-catarina": {
+      "type": "Nightmarish Wings of Catarina",
+      "statIds": [
+        "explicit.stat_125218179",
+        "implicit.stat_125218179"
+      ],
+      "min": 1
+    },
+    "shapers-head": {
+      "type": "Shaper's Head",
+      "statIds": [],
+      "min": null
+    },
+    "greater-shapers-head": {
+      "type": "Shaper's Head",
+      "statIds": [],
+      "min": null
+    },
+    "elders-head": {
+      "type": "Elder's Head",
+      "statIds": [],
+      "min": null
+    },
+    "greater-elders-head": {
+      "type": "Elder's Head",
+      "statIds": [
+        "explicit.stat_3119292058",
+        "implicit.stat_3119292058"
+      ],
+      "min": null
+    },
+    "venarius-scripture": {
+      "type": "Venarius' Scripture",
+      "statIds": [
+        "explicit.stat_2474564741",
+        "implicit.stat_2474564741"
+      ],
+      "min": 8
+    },
+    "greater-venarius-scripture": {
+      "type": "Venarius' Scripture",
+      "statIds": [],
+      "min": null
+    },
+    "sirus-head-life": {
+      "type": "Sirus' Head",
+      "statIds": [
+        "explicit.stat_881645355",
+        "implicit.stat_881645355"
+      ],
+      "min": null
+    },
+    "sirus-head-mana": {
+      "type": "Sirus' Head",
+      "statIds": [
+        "explicit.stat_2571899044",
+        "implicit.stat_2571899044"
+      ],
+      "min": null
+    },
+    "sirus-head-energy-shield": {
+      "type": "Sirus' Head",
+      "statIds": [
+        "explicit.stat_3268519799",
+        "implicit.stat_3268519799"
+      ],
+      "min": null
+    },
+    "greater-sirus-head": {
+      "type": "Sirus' Head",
+      "statIds": [
+        "implicit.stat_2360921519"
+      ],
+      "min": 5
+    },
+    "mavens-orrery": {
+      "type": "Maven's Orrery",
+      "statIds": [],
+      "min": null
+    },
+    "greater-mavens-orrery": {
+      "type": "Maven's Orrery",
+      "statIds": [],
+      "min": null
+    },
+    "searing-exarchs-descry": {
+      "type": "Searing Exarch's Descry",
+      "statIds": [
+        "explicit.stat_1642347505",
+        "implicit.stat_1642347505"
+      ],
+      "min": 4
+    },
+    "greater-searing-exarchs-descry": {
+      "type": "Searing Exarch's Descry",
+      "statIds": [
+        "explicit.stat_2094299742",
+        "explicit.stat_335507772",
+        "implicit.stat_335507772",
+        "implicit.stat_2094299742"
+      ],
+      "min": 3
+    },
+    "eater-of-worlds-head": {
+      "type": "Eater of Worlds' Head",
+      "statIds": [
+        "explicit.stat_1302845655",
+        "implicit.stat_1302845655"
+      ],
+      "min": 10
+    },
+    "greater-eater-of-worlds-head": {
+      "type": "Eater of Worlds' Head",
+      "statIds": [
+        "explicit.stat_3655769732",
+        "implicit.stat_3655769732"
+      ],
+      "min": 5
+    },
+    "incarnation-of-neglects-cube": {
+      "type": "Incarnation of Neglect's Cube",
+      "statIds": [
+        "explicit.stat_514698677",
+        "implicit.stat_514698677"
+      ],
+      "min": 10
+    },
+    "greater-incarnation-of-neglects-cube": {
+      "type": "Incarnation of Neglect's Cube",
+      "statIds": [
+        "explicit.stat_1631195850",
+        "implicit.stat_1631195850"
+      ],
+      "min": 4
+    },
+    "incarnation-of-fears-head": {
+      "type": "Incarnation of Fear's Head",
+      "statIds": [],
+      "min": null
+    },
+    "greater-incarnation-of-fears-head": {
+      "type": "Incarnation of Fear's Head",
+      "statIds": [
+        "explicit.stat_2973498992",
+        "implicit.stat_2973498992"
+      ],
+      "min": null
+    },
+    "incarnation-of-dreads-head": {
+      "type": "Incarnation of Dread's Head",
+      "statIds": [
+        "explicit.stat_2370748292",
+        "implicit.stat_2370748292"
+      ],
+      "min": 20
+    },
+    "greater-incarnation-of-dreads-head": {
+      "type": "Incarnation of Dread's Head",
+      "statIds": [
+        "explicit.stat_3493440964",
+        "implicit.stat_3493440964"
+      ],
+      "min": 1
+    },
+    "coven-queens-crown": {
+      "type": "Coven Queen's Crown",
+      "statIds": [],
+      "min": null
+    }
+  }
+}

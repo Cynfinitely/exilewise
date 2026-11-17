@@ -11,9 +11,9 @@ export function PageHeader({
   return (
     <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div className="min-w-0">
-        <h1 className="text-2xl font-bold text-forge-goldbright">{title}</h1>
+        <h1 className="display text-3xl sm:text-4xl">{title}</h1>
         {description ? (
-          <p className="mt-1 max-w-3xl text-sm text-forge-muted">
+          <p className="mt-2 max-w-3xl leading-relaxed text-forge-muted">
             {description}
           </p>
         ) : null}

@@ -75,7 +75,7 @@ export function SavedLibrary() {
           <EmptyState
             title="No favorite bases yet"
             action={
-              <Link href="/items" className="btn btn-primary tap">
+              <Link href="/poe2/items" className="btn btn-primary tap">
                 Browse items
               </Link>
             }
@@ -87,7 +87,7 @@ export function SavedLibrary() {
             {favorites.map(f => (
               <li key={f.baseId} className="min-w-0">
                 <Link
-                  href={`/items?base=${encodeURIComponent(f.baseId)}`}
+                  href={`/poe2/items?base=${encodeURIComponent(f.baseId)}`}
                   className="panel flex min-h-11 min-w-0 items-center justify-between gap-3 px-4 py-3 transition-colors hover:border-forge-gold/50"
                 >
                   <span

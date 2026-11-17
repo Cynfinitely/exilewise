@@ -80,12 +80,6 @@ export function getMaterials(): Material[] {
   return cache;
 }
 
-export function getMaterialsMeta(): { league: string; fetchedAt: string } {
-  const file = path.join(process.cwd(), 'data', 'snapshot', 'materials.json');
-  const snap = JSON.parse(fs.readFileSync(file, 'utf8')) as Snapshot;
-  return { league: snap.league, fetchedAt: snap.fetchedAt };
-}
-
 export function getEssences(): Material[] {
   return getMaterials().filter(m => m.category === 'essences');
 }
