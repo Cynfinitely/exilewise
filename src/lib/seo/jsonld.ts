@@ -69,6 +69,27 @@ export function webAppJsonLd(opts: {
   };
 }
 
+/** A guide or article page. Dates are ISO strings (YYYY-MM-DD is fine). */
+export function articleJsonLd(opts: {
+  headline: string;
+  path: string;
+  description: string;
+  dateModified: string;
+}): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: abs(opts.path),
+    mainEntityOfPage: abs(opts.path),
+    dateModified: opts.dateModified,
+    inLanguage: 'en',
+    author: CREATOR,
+    publisher: CREATOR,
+  };
+}
+
 /** VideoObject without @context, for nesting inside a list. */
 function videoObject(v: Video): JsonLdObject {
   return {

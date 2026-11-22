@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import { pageMetadata } from '../src/lib/seo/metadata';
 import { SEO_PAGES } from '../src/lib/seo/pages';
 import {
+  articleJsonLd,
   breadcrumbJsonLd,
   serializeJsonLd,
   videoJsonLd,
@@ -136,4 +137,15 @@ test('JSON-LD builders emit the fields search engines require', () => {
   };
   assert.match(crumbs.itemListElement[0].item, /^https:\/\//);
   assert.equal(websiteJsonLd('x')['@type'], 'WebSite');
+  const article = articleJsonLd({
+    headline: 'Guide',
+    path: '/poe1/guides/x',
+    description: 'd',
+    dateModified: '2026-11-22',
+  });
+  assert.equal(article['@type'], 'Article');
+  assert.match(String(article.url), /^https:\/\/.+\/poe1\/guides\/x$/);
+  for (const key of ['headline', 'dateModified', 'author']) {
+    assert.ok(article[key], `Article.${key}`);
+  }
 });

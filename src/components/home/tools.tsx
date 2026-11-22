@@ -75,6 +75,13 @@ export const GAME_TOOLS: GameTools[] = [
         accent: 'peach',
         desc: 'Every viscera from the Covens league with search and filters, where each one drops, a four-slot Wickerman builder and suggestions for your build.',
       },
+      {
+        href: '/poe1/guides/temple-of-atzoatl-farm',
+        title: 'Temple of Atzoatl Farm',
+        icon: 'guides',
+        accent: 'sky',
+        desc: 'The 8-Thread, three-map Incursion loop that builds a Cradle of Creation Temple: setup, Architect and door choices, selling and a profit calculator.',
+      },
     ],
   },
 ];

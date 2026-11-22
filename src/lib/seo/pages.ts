@@ -42,6 +42,16 @@ export const SEO_PAGES = [
     ogImageAlt: 'Every Path of Exile Covens viscera and the Wickerman planner',
   },
   {
+    path: '/poe1/guides/temple-of-atzoatl-farm',
+    title: 'Temple of Atzoatl Farm Guide: 8-Thread Cradle (3.30)',
+    description:
+      'PoE 3.30 Temple of Atzoatl farm: an 8-Thread, three-map Incursion loop for Cradle of Creation, Architect and door choices, selling tips and a profit calculator.',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+    ogImageAlt:
+      'Temple of Atzoatl farm guide: eight Threads, three maps, one Cradle of Creation Temple',
+  },
+  {
     path: '/videos',
     title: 'Path of Exile Videos by Cyn · Exilewise',
     description:

@@ -79,6 +79,17 @@ export const GAMES: Record<GameId, GameMeta> = {
           },
         ],
       },
+      {
+        label: 'Guides',
+        links: [
+          {
+            href: '/poe1/guides',
+            label: 'Guides',
+            description: 'Farming guides: Temple of Atzoatl and more',
+            icon: 'guides',
+          },
+        ],
+      },
     ],
   },
   poe2: {

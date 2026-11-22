@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { GUIDE as TEMPLE_GUIDE } from '@/lib/poe1/guides/temple/meta';
 import { getVisceraSnapshot } from '@/lib/poe1/viscera/data';
 import { SEO_PAGES, type SeoPath } from '@/lib/seo/pages';
 import { SITE_URL } from '@/lib/site';
@@ -20,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified: Record<SeoPath, Date> = {
     '/': newest(visceraData, latestVideo),
     '/poe1/viscera': visceraData,
+    '/poe1/guides/temple-of-atzoatl-farm': new Date(TEMPLE_GUIDE.updatedAt),
     '/videos': latestVideo ?? visceraData,
   };
 
