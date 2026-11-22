@@ -27,7 +27,7 @@ import {
   SOURCES,
   SOURCES_ACCESSED,
 } from '@/lib/poe1/guides/temple/meta';
-import { articleJsonLd, breadcrumbJsonLd } from '@/lib/seo/jsonld';
+import { articleJsonLd, breadcrumbJsonLd, videoJsonLd } from '@/lib/seo/jsonld';
 import { pageMetadata } from '@/lib/seo/metadata';
 import { seoPage } from '@/lib/seo/pages';
 import { VIDEO_ID } from '@/lib/youtube/channel';
@@ -127,6 +127,8 @@ function VideoBlock() {
 export default function TempleFarmGuidePage() {
   const seo = seoPage(GUIDE_PATH);
   const atlas = GUIDE.atlasTreeUrl.value;
+  const rawVideoId = GUIDE.videoId.value;
+  const videoId = rawVideoId && VIDEO_ID.test(rawVideoId) ? rawVideoId : null;
 
   return (
     <div className="space-y-10">
@@ -143,6 +145,20 @@ export default function TempleFarmGuidePage() {
             description: seo.description,
             dateModified: GUIDE.updatedAt,
           }),
+          ...(videoId
+            ? [
+                videoJsonLd({
+                  id: videoId,
+                  title: GUIDE.videoTitle,
+                  description: seo.description,
+                  published: GUIDE.videoPublished,
+                  publishedLabel: '',
+                  views: null,
+                  viewsLabel: null,
+                  game: 'poe1',
+                }),
+              ]
+            : []),
         ]}
       />
 

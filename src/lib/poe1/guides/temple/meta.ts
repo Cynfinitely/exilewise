@@ -16,9 +16,11 @@ export const GUIDE = {
   patch: '3.30.0d',
   league: 'Covens',
   /** 11-character YouTube id of the companion video, e.g. 'SCJX7QejlfQ'. */
-  videoId: fill('YouTube video id of the Temple farm video'),
-  /** Title shown on the play button until the video is set. */
-  videoTitle: 'Covens 3.30: full 8-Thread, three-map Temple of Atzoatl farm',
+  videoId: fill('YouTube video id of the Temple farm video', 'SqcuaGyntiI'),
+  /** The video's YouTube title, used for the player's accessible label. */
+  videoTitle: 'I Sold a 3-Map Temple for 4 Divines | PoE 3.30 Incursion Farm',
+  /** Upload time from the channel feed, for VideoObject structured data. */
+  videoPublished: '2026-11-22T11:55:51+00:00',
   /** Shareable Atlas passive tree link (poeplanner / official tree export). */
   atlasTreeUrl: fill(
     'Atlas passive tree URL',
