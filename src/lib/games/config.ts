@@ -42,19 +42,33 @@ export interface GameNavItem {
   label: string;
   description: string;
   icon: NavIconName;
+  /** Only shown when the selected league's name matches (league mechanics). */
+  leagueMatch?: RegExp;
 }
 
 export interface GameNavGroup {
   label: string;
   links: GameNavItem[];
-  /** Only shown when the selected league's name matches (league mechanics). */
-  leagueMatch?: RegExp;
+  /** Desktop bar shows the group as one dropdown named `label`. */
+  menu?: boolean;
+  /** Icon on the dropdown button (menu groups only). */
+  icon?: NavIconName;
+}
+
+export interface GameLogo {
+  /** Official logo in `public/games/` (from Wikipedia, © Grinding Gear Games). */
+  src: string;
+  width: number;
+  height: number;
 }
 
 export interface GameMeta {
   id: GameId;
   name: string;
   short: string;
+  /** One line for the game picker cards. */
+  tagline: string;
+  logo: GameLogo;
   /** Landing page of the game's section. */
   home: string;
   nav: GameNavGroup[];
@@ -65,27 +79,43 @@ export const GAMES: Record<GameId, GameMeta> = {
     id: 'poe1',
     name: 'Path of Exile 1',
     short: 'PoE 1',
+    tagline: 'Covens league viscera, the Wickerman planner and farming guides.',
+    logo: { src: '/games/poe1-logo.png', width: 391, height: 255 },
     home: '/poe1',
     nav: [
       {
-        label: 'Covens league',
-        leagueMatch: /covens/i,
+        label: 'Tools',
         links: [
           {
-            href: '/poe1/viscera',
-            label: 'Viscera',
-            description: 'Every viscera, Wickerman builder, build suggestions',
-            icon: 'viscera',
+            href: '/poe1/build-planner',
+            label: 'Build Planner',
+            description: 'Compare your build with a goal, get an AI plan',
+            icon: 'build',
           },
         ],
       },
       {
         label: 'Guides',
+        menu: true,
+        icon: 'guides',
         links: [
           {
+            href: '/poe1/viscera',
+            label: 'Covens: Viscera & Wickerman',
+            description: 'Every viscera, Wickerman builder, build suggestions',
+            icon: 'viscera',
+            leagueMatch: /covens/i,
+          },
+          {
+            href: '/poe1/guides/temple-of-atzoatl-farm',
+            label: 'Temple of Atzoatl farm',
+            description: 'Eight-Thread Cradle of Creation loop and profit',
+            icon: 'guides',
+          },
+          {
             href: '/poe1/guides',
-            label: 'Guides',
-            description: 'Farming guides: Temple of Atzoatl and more',
+            label: 'All guides',
+            description: 'Every PoE 1 guide and league companion',
             icon: 'guides',
           },
         ],
@@ -96,6 +126,9 @@ export const GAMES: Record<GameId, GameMeta> = {
     id: 'poe2',
     name: 'Path of Exile 2',
     short: 'PoE 2',
+    tagline:
+      'Crafting planner, every mod on every base and live material prices.',
+    logo: { src: '/games/poe2-logo.png', width: 766, height: 680 },
     home: '/poe2',
     nav: [
       {
@@ -119,6 +152,12 @@ export const GAMES: Record<GameId, GameMeta> = {
         label: 'Plan',
         links: [
           {
+            href: '/poe2/build-planner',
+            label: 'Build Planner',
+            description: 'Compare your build with a goal, get an AI plan',
+            icon: 'build',
+          },
+          {
             href: '/poe2/craft',
             label: 'Planner',
             description: 'Find the cheapest way to craft an item',
@@ -136,10 +175,21 @@ export const GAMES: Record<GameId, GameMeta> = {
   },
 };
 
-/** Menu groups for a game, with league-mechanic groups filtered by league. */
+function inLeague(link: GameNavItem, league: string): boolean {
+  return !link.leagueMatch || link.leagueMatch.test(league);
+}
+
+/** Menu groups for a game, with league-mechanic links filtered by league. */
 export function navGroupsFor(game: GameId, league: string): GameNavGroup[] {
-  return GAMES[game].nav.filter(
-    g => !g.leagueMatch || g.leagueMatch.test(league)
+  return GAMES[game].nav
+    .map(g => ({ ...g, links: g.links.filter(l => inLeague(l, league)) }))
+    .filter(g => g.links.length > 0);
+}
+
+/** League-mechanic links left out of the menu for this league. */
+export function hiddenLeagueLinks(game: GameId, league: string): GameNavItem[] {
+  return GAMES[game].nav.flatMap(g =>
+    g.links.filter(l => !inLeague(l, league))
   );
 }
 

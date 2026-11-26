@@ -1,11 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useId, useTransition } from 'react';
+import { usePopover } from '@/components/ui/usePopover';
 import {
   GAME_COOKIE,
   GAME_IDS,
   GAMES,
+  isGameEnabled,
   leagueCookie,
   PREF_COOKIE_MAX_AGE,
   type GameId,
@@ -17,45 +20,138 @@ function setPrefCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=${PREF_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
 }
 
-export function GameSwitch({
+export function Chevron({ className = '' }: { className?: string }) {
+  return (
+    <svg aria-hidden viewBox="0 0 20 20" className={className} fill="none">
+      <path
+        d="M5.5 7.5 10 12l4.5-4.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Game picker for the top bar: the current game's logo opens a menu of every
+ * game. Games not in ENABLED_GAMES are listed as "Coming soon".
+ */
+export function GamePicker({
   game,
-  size = 'md',
+  wide = false,
 }: {
   game: GameId;
-  size?: 'sm' | 'md';
+  wide?: boolean;
 }) {
   const router = useRouter();
+  const { open, setOpen, rootRef, triggerRef } = usePopover();
+  const menuId = useId();
+
   const pick = (next: GameId) => {
+    setOpen(false);
     setPrefCookie(GAME_COOKIE, next);
     router.push(GAMES[next].home);
   };
+
+  const current = GAMES[game];
+
   return (
-    <div
-      role="radiogroup"
-      aria-label="Game"
-      className="inline-flex shrink-0 rounded-full border border-forge-border bg-forge-panel2/70 p-0.5"
-    >
-      {GAME_IDS.map(id => {
-        const active = id === game;
-        return (
-          <button
-            key={id}
-            type="button"
-            role="radio"
-            aria-checked={active}
-            onClick={() => (active ? router.push(GAMES[id].home) : pick(id))}
-            className={`rounded-full font-semibold transition-colors ${
-              size === 'sm' ? 'h-7 px-2.5 text-xs' : 'h-8 px-3 text-sm'
-            } ${
-              active
-                ? 'bg-forge-gold text-forge-ink shadow-xs'
-                : 'text-forge-muted hover:text-forge-goldbright'
-            }`}
-          >
-            {GAMES[id].short}
-          </button>
-        );
-      })}
+    <div ref={rootRef} className={`relative ${wide ? 'w-full' : 'shrink-0'}`}>
+      <button
+        ref={triggerRef}
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-controls={menuId}
+        aria-label={`Game: ${current.name}. Change game`}
+        onClick={() => setOpen(o => !o)}
+        className={`flex h-9 items-center gap-2 rounded-full border border-forge-border bg-forge-panel2/70 pl-1.5 pr-2.5 transition-colors hover:border-forge-gold/60 max-md:h-11 ${
+          wide ? 'w-full' : ''
+        }`}
+      >
+        <Image
+          src={current.logo.src}
+          width={current.logo.width}
+          height={current.logo.height}
+          alt=""
+          sizes="48px"
+          className="h-7 w-10 object-contain max-md:h-9"
+        />
+        <span className="font-display text-xs font-semibold tracking-[0.16em] text-forge-goldbright">
+          {current.short.toUpperCase()}
+        </span>
+        <Chevron
+          className={`ml-auto h-4 w-4 text-forge-muted transition-transform ${
+            open ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+
+      {open ? (
+        <ul
+          id={menuId}
+          aria-label="Choose a game"
+          className={`panel absolute top-full z-60 mt-2 space-y-1 bg-forge-panel p-1.5 shadow-lg ${
+            wide ? 'inset-x-0' : 'left-0 w-80'
+          }`}
+        >
+          {GAME_IDS.map(id => {
+            const g = GAMES[id];
+            const enabled = isGameEnabled(id);
+            const active = id === game;
+            return (
+              <li key={id}>
+                <button
+                  type="button"
+                  disabled={!enabled}
+                  aria-current={active ? 'true' : undefined}
+                  onClick={() => (active ? router.push(g.home) : pick(id))}
+                  className={`flex w-full items-center gap-3 rounded-xl border p-2 text-left transition-colors ${
+                    active
+                      ? 'border-forge-gold/40 bg-forge-panel2'
+                      : 'border-transparent'
+                  } ${
+                    enabled
+                      ? 'hover:bg-forge-panel2/70'
+                      : 'cursor-not-allowed opacity-60'
+                  }`}
+                >
+                  <Image
+                    src={g.logo.src}
+                    width={g.logo.width}
+                    height={g.logo.height}
+                    alt=""
+                    sizes="80px"
+                    className={`h-12 w-16 shrink-0 object-contain ${
+                      enabled ? '' : 'grayscale'
+                    }`}
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-display text-sm tracking-wide text-forge-goldbright">
+                      {g.name}
+                    </span>
+                    <span className="block text-xs text-forge-muted">
+                      {enabled
+                        ? active
+                          ? 'You are here'
+                          : 'Open tools'
+                        : 'Coming soon'}
+                    </span>
+                  </span>
+                  {active ? (
+                    <span
+                      aria-hidden
+                      className="h-2 w-2 rounded-full bg-aurora-teal shadow-[0_0_8px_rgb(79_209_184/0.8)]"
+                    />
+                  ) : null}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
     </div>
   );
 }
@@ -115,21 +211,7 @@ export function LeagueSelect({
           </optgroup>
         ) : null}
       </select>
-      <svg
-        aria-hidden
-        viewBox="0 0 20 20"
-        className="pointer-events-none absolute right-3 h-4 w-4 text-forge-muted"
-        fill="currentColor"
-      >
-        <path
-          d="M5.5 7.5 10 12l4.5-4.5"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Chevron className="pointer-events-none absolute right-3 h-4 w-4 text-forge-muted" />
     </div>
   );
 }

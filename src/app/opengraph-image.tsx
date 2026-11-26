@@ -7,9 +7,9 @@ export const contentType = 'image/png';
 
 export default function Image() {
   return renderOgImage({
-    eyebrow: 'Path of Exile · Covens league',
-    title: 'Feed the Wickerman',
+    eyebrow: 'Path of Exile 1 & 2',
+    title: 'Tools for every exile',
     subtitle:
-      'Every viscera, where it drops, a Wickerman planner and picks for your build.',
+      'Planners, item data and farming guides. Pick your game and league.',
   });
 }

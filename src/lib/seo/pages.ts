@@ -25,12 +25,12 @@ export interface SeoPage {
 export const SEO_PAGES = [
   {
     path: '/',
-    title: 'PoE Covens Viscera & Wickerman Planner · Exilewise',
+    title: 'Path of Exile Tools & Guides for PoE 1 and 2 · Exilewise',
     description:
-      'Free Path of Exile 3.30 Covens companion: every viscera, where it drops, a Wickerman planner with combined stats, build suggestions and instant-buy links.',
+      'Free Path of Exile 1 and 2 tools: Covens viscera list, Wickerman planner and farming guides with profit calculators. PoE 2 crafting tools coming soon.',
     changeFrequency: 'weekly',
     priority: 1,
-    ogImageAlt: 'Exilewise: Path of Exile Covens viscera and Wickerman planner',
+    ogImageAlt: 'Exilewise: Path of Exile 1 and 2 tools, planners and guides',
   },
   {
     path: '/poe1/viscera',
@@ -40,6 +40,16 @@ export const SEO_PAGES = [
     changeFrequency: 'weekly',
     priority: 0.9,
     ogImageAlt: 'Every Path of Exile Covens viscera and the Wickerman planner',
+  },
+  {
+    path: '/poe1/build-planner',
+    title: 'PoE Build Planner: Compare PoB & Get an AI Upgrade Plan',
+    description:
+      'Compare your Path of Building with your goal build: stat, gear, gem and tree gap with live prices, then an AI prompt for a step-by-step upgrade plan.',
+    changeFrequency: 'monthly',
+    priority: 0.8,
+    ogImageAlt:
+      'Exilewise Build Planner: compare two Path of Building exports and get an AI upgrade plan',
   },
   {
     path: '/poe1/guides/temple-of-atzoatl-farm',
