@@ -34,6 +34,13 @@ export const GAME_TOOLS: GameTools[] = [
     blurb: 'Crafting tools built on the current game data and live prices.',
     tools: [
       {
+        href: '/poe2/build-planner',
+        title: 'Build Planner',
+        icon: 'build',
+        accent: 'lavender',
+        desc: 'Paste your current and goal Path of Building, see the gap and get an AI prompt for a step-by-step upgrade plan.',
+      },
+      {
         href: '/poe2/craft',
         title: 'Crafting Planner',
         icon: 'craft',
@@ -68,6 +75,13 @@ export const GAME_TOOLS: GameTools[] = [
     title: 'Path of Exile 1',
     blurb: 'League tools for the current Covens league.',
     tools: [
+      {
+        href: '/poe1/build-planner',
+        title: 'Build Planner',
+        icon: 'build',
+        accent: 'lavender',
+        desc: 'Paste your current and goal Path of Building, see the gap with live prices and get an AI prompt for a step-by-step upgrade plan.',
+      },
       {
         href: '/poe1/viscera',
         title: 'Viscera & Wickerman',

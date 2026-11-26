@@ -40,10 +40,13 @@ export function buildCsp(nonce: string, dev: boolean): string {
 /** Pre-/poe2 URLs of the PoE 2 tools. */
 const LEGACY_POE2 = /^\/(craft|items|materials|plans)(\/|$)/;
 
+/** API routes used by both games; each checks the requested game itself. */
+const SHARED_API = /^\/api\/build-plan\/?$/;
+
 /**
  * Hidden-game routing: PoE 2 pages redirect to the default game while PoE 2
- * is disabled in `ENABLED_GAMES`; its JSON API (every /api route today) is
- * switched off. Returns null when the request may go through.
+ * is disabled in `ENABLED_GAMES`; its JSON API (every /api route except the
+ * shared ones) is switched off. Returns null when the request may go through.
  */
 export function gateRequest(
   pathname: string,
@@ -51,7 +54,7 @@ export function gateRequest(
 ): NextResponse | null {
   const poe2 = isGameEnabled('poe2');
   if (pathname.startsWith('/api/')) {
-    return poe2
+    return poe2 || SHARED_API.test(pathname)
       ? null
       : NextResponse.json({ error: 'Not found' }, { status: 404 });
   }

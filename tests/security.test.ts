@@ -97,6 +97,7 @@ test('hidden PoE 2: pages redirect to PoE 1 and the API is off', () => {
   assert.equal(loc('/poe2'), `${origin}/poe1`);
   assert.equal(loc('/craft'), `${origin}/poe1`);
   assert.equal(gateRequest('/api/import', origin)?.status, 404);
+  assert.equal(gateRequest('/api/build-plan', origin), null); // shared by both games
   assert.equal(gateRequest('/poe1/viscera', origin), null);
   assert.equal(gateRequest('/poe2-notes', origin), null); // prefix only
 });

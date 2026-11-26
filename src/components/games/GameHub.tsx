@@ -1,15 +1,13 @@
 import { GAME_TOOLS, GameToolGrid } from '@/components/home/tools';
 import { Alert } from '@/components/ui/Alert';
-import { GAMES, navGroupsFor, type GameId } from '@/lib/games/config';
+import { GAMES, hiddenLeagueLinks, type GameId } from '@/lib/games/config';
 import { getSelectedLeague } from '@/lib/games/selection';
 
 /** Landing page of one game's section: its tools for the selected league. */
 export async function GameHub({ game }: { game: GameId }) {
   const league = await getSelectedLeague(game);
   const tools = GAME_TOOLS.find(g => g.id === game);
-  const hiddenLeagueTools = GAMES[game].nav.filter(
-    g => g.leagueMatch && !navGroupsFor(game, league).includes(g)
-  );
+  const hiddenLeagueTools = hiddenLeagueLinks(game, league);
 
   return (
     <div className="space-y-12">
@@ -28,7 +26,7 @@ export async function GameHub({ game }: { game: GameId }) {
       </header>
       {hiddenLeagueTools.length ? (
         <Alert tone="info" title="Some tools are league-specific">
-          {hiddenLeagueTools.map(g => g.label).join(', ')} tools are not in the{' '}
+          {hiddenLeagueTools.map(l => l.label).join(', ')} tools are not in the{' '}
           {league} menu, because that mechanic is not part of {league}. Pick
           that league in the top bar to see them in the menu. The pages below
           still work as a reference.

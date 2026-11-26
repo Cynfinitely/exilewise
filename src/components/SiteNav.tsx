@@ -4,11 +4,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { BrandMark } from '@/components/brand/BrandMark';
-import { GameSwitch, LeagueSelect } from '@/components/nav/GameLeagueControls';
+import { GamePicker, LeagueSelect } from '@/components/nav/GameLeagueControls';
+import {
+  activeHref,
+  MenuLink as DrawerLink,
+  NavMenu,
+} from '@/components/nav/NavMenu';
 import { NavIcon } from '@/components/ui/NavIcons';
 import { Sheet } from '@/components/ui/Sheet';
 import {
-  ENABLED_GAMES,
   GAMES,
   gameFromPath,
   navGroupsFor,
@@ -24,11 +28,14 @@ export interface SiteNavProps {
   >;
 }
 
-/** Primary call to action per game. */
-const CTA: Record<GameId, { href: string; label: string }> = {
-  poe1: { href: '/poe1/viscera#wickerman', label: 'Build a Wickerman' },
-  poe2: { href: '/poe2/craft', label: 'Plan a craft' },
-};
+/** Call-to-action button, shown only on the pages under `path`. */
+const CTAS = [
+  {
+    path: '/poe1/viscera',
+    href: '/poe1/viscera#wickerman',
+    label: 'Build a Wickerman',
+  },
+] as const;
 
 /** Site-wide link to the YouTube channel page, outside the game menus. */
 const VIDEOS: NavItem = {
@@ -68,49 +75,6 @@ function DesktopLink({ item, active }: { item: NavItem; active: boolean }) {
   );
 }
 
-function DrawerLink({
-  item,
-  active,
-  onNavigate,
-}: {
-  item: NavItem;
-  active: boolean;
-  onNavigate: () => void;
-}) {
-  return (
-    <Link
-      href={item.href}
-      onClick={onNavigate}
-      aria-current={active ? 'page' : undefined}
-      className={`flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 transition-colors ${
-        active
-          ? 'border-forge-gold/40 bg-forge-panel2'
-          : 'border-transparent hover:bg-forge-panel2/70'
-      }`}
-    >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-forge-border bg-forge-bg/60 text-forge-rust-strong">
-        <NavIcon name={item.icon} className="h-5 w-5" />
-      </span>
-      <span className="min-w-0">
-        <span className="block font-display text-base tracking-wide text-forge-goldbright">
-          {item.label}
-        </span>
-        <span className="block truncate text-xs text-forge-muted">
-          {item.description}
-        </span>
-      </span>
-    </Link>
-  );
-}
-
-function GameLabel({ game }: { game: GameId }) {
-  return (
-    <span className="hidden h-8 items-center rounded-full border border-forge-border bg-forge-panel2/60 px-3 font-display text-xs font-semibold tracking-[0.18em] text-forge-rust-strong md:inline-flex">
-      {GAMES[game].short.toUpperCase()}
-    </span>
-  );
-}
-
 export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -134,8 +98,7 @@ export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
   const game = gameFromPath(pathname) ?? rememberedGame;
   const { options = [], selected = '' } = leagues[game] ?? {};
   const groups = navGroupsFor(game, selected);
-  const cta = CTA[game];
-  const multiGame = ENABLED_GAMES.length > 1;
+  const cta = CTAS.find(c => isActive(pathname, c.path));
   const homeActive = pathname === '/';
 
   const overview: NavItem = {
@@ -147,7 +110,7 @@ export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
 
   const controls = (wide: boolean) => (
     <>
-      {multiGame ? <GameSwitch game={game} /> : <GameLabel game={game} />}
+      <GamePicker game={game} wide={wide} />
       <LeagueSelect
         key={game}
         game={game}
@@ -198,25 +161,36 @@ export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
               aria-label={`${GAMES[game].short} ${group.label}`}
               className="flex items-center"
             >
-              {group.links.map(link => (
-                <DesktopLink
-                  key={link.href}
-                  item={link}
-                  active={isActive(pathname, link.href)}
+              {group.menu ? (
+                <NavMenu
+                  label={group.label}
+                  icon={group.icon}
+                  links={group.links}
+                  pathname={pathname}
                 />
-              ))}
+              ) : (
+                group.links.map(link => (
+                  <DesktopLink
+                    key={link.href}
+                    item={link}
+                    active={isActive(pathname, link.href)}
+                  />
+                ))
+              )}
             </div>
           ))}
           <span aria-hidden className="mx-2 h-5 w-px bg-forge-border" />
           <DesktopLink item={VIDEOS} active={isActive(pathname, VIDEOS.href)} />
         </div>
 
-        <Link
-          href={cta.href}
-          className="btn btn-primary ml-auto hidden h-10 shrink-0 rounded-full px-5 font-display text-xs font-bold uppercase tracking-[0.16em] xl:inline-flex"
-        >
-          {cta.label}
-        </Link>
+        {cta ? (
+          <Link
+            href={cta.href}
+            className="btn btn-primary ml-auto hidden h-10 shrink-0 rounded-full px-5 font-display text-xs font-bold uppercase tracking-[0.16em] xl:inline-flex"
+          >
+            {cta.label}
+          </Link>
+        ) : null}
 
         <button
           type="button"
@@ -242,7 +216,7 @@ export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
       <Sheet open={drawerOpen} onClose={closeDrawer} title="Menu" side="right">
         <nav aria-label="Main (mobile)" className="space-y-5 p-4">
           <div className="space-y-2 sm:hidden">
-            <p className="section-title">League</p>
+            <p className="section-title">Game &amp; league</p>
             <div className="flex flex-col gap-2">{controls(true)}</div>
           </div>
           <DrawerLink
@@ -258,7 +232,7 @@ export function SiteNav({ rememberedGame, leagues }: SiteNavProps) {
                   <DrawerLink
                     key={link.href}
                     item={link}
-                    active={isActive(pathname, link.href)}
+                    active={link.href === activeHref(pathname, group.links)}
                     onNavigate={closeDrawer}
                   />
                 ))}

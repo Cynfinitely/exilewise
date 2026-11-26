@@ -7,9 +7,16 @@ export type NavIconName =
   | 'plans'
   | 'viscera'
   | 'videos'
-  | 'guides';
+  | 'guides'
+  | 'build';
 
 const PATHS: Record<NavIconName, React.ReactNode> = {
+  build: (
+    <>
+      <path d="M3 19h4.5v-4.5H12V10h4.5V5.5H21" />
+      <path d="m17.5 3 3.5 2.5L17.5 8" />
+    </>
+  ),
   home: (
     <>
       <path d="M3 10.5 12 3l9 7.5" />
